@@ -1,0 +1,10 @@
+2025-09-16 14:54:01,375 INFO django.utils.autoreload Watching for file changes with StatReloader
+2025-09-16 14:54:05,896 WARNING django.request Not Found: /
+2025-09-16 14:54:06,073 WARNING django.request Not Found: /favicon.ico
+2025-09-16 14:54:13,096 WARNING django.request Not Found: /
+2025-09-16 14:54:13,160 WARNING django.request Not Found: /favicon.ico
+2025-09-16 14:54:13,254 INFO django.utils.autoreload C:\Users\ADMIN\OneDrive\Desktop\sysco180\syscoproject\syscoapp\urls.py changed, reloading.
+2025-09-16 14:54:14,579 INFO django.utils.autoreload Watching for file changes with StatReloader
+2025-09-16 14:54:16,175 WARNING django.request Not Found: /favicon.ico
+2025-09-16 14:54:46,847 INFO django.utils.autoreload Watching for file changes with StatReloader
+2025-09-16 14:54:50,764 WARNING django.request Not Found: /favicon.ico
