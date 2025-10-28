@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Information — Sysco180</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login_page">
+          <div class="login_a">
+            <div>
+              <img src="/static/assets/images/final_logo_w.avif" class="final_logo mb-4" />
+            </div>
+            <h1 class="hero-title">Streamlined Digital Arbitration Platform</h1>
+            <p class="hero-desc mb-3">
+              Efficiently manage institutional arbitration cases from intake to
+              award. Designed for banks, administrators, and arbitrators.
+            </p>
+          </div>
+
+        <div class="login_form">
+                <div class=" d-flex justify-content-center align-items-center" style="min-height:100vh;">
+                <div class="useradd_d pd">
+
+                    <!-- Stepper -->
+                <div class="d-flex justify-content-center mb-3 align-items-center stepper">
+                      <div class="rounded-circle text-white d-flex align-items-center justify-content-center step inactive-step">
+                        1
+                      </div>
+                      <div class="line"></div>
+                      <div class="rounded-circle text-white d-flex align-items-center justify-content-center step active-step">
+                        2
+                      </div>
+                      <div class="line"></div>
+                      <div class="rounded-circle text-white d-flex align-items-center justify-content-center step inactive-step">
+                        3
+                      </div>
+                </div>
+
+                            <!-- Page Heading -->
+                  <h5 class="text-center mb-2">Personal Information</h5><br>
+                  <div class="text-center mb-2">
+                    <i class="bi bi-person-lines-fill" style="font-size:28px; color:#0b3b5e;"></i>
+                  </div>
+                  <p class="text-center text-muted">Tell us more about yourself</p>
+
+                        <!-- Personal Info Form -->
+            <form>
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">Name</label>
+                  <input type="text" class="form-control" placeholder="Enter your name">
+                </div>
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">Email ID</label>
+                  <input type="email" class="form-control" placeholder="Enter your email">
+                </div>
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">Contact No</label>
+                  <input type="tel" class="form-control" placeholder="Enter your contact no">
+                </div>
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">Indian National/forgien </label>
+                  <textarea class="form-control" rows="2" placeholder="Enter your "></textarea>
+                </div>
+                 
+  <div class="mb-3 text-start">
+    <label class="form-label fw-bold">State</label>
+    <select class="form-select">
+      <option selected disabled>Select your state</option>
+      <option value="MH">Maharashtra</option>
+      <option value="GJ">Gujarat</option>
+      <option value="RJ">Rajasthan</option>
+      <option value="UP">Uttar Pradesh</option>
+    </select>
+  </div>
+
+  <div class="mb-3 text-start">
+    <label class="form-label fw-bold">City</label>
+    <select class="form-select">
+      <option selected disabled>Select your city</option>
+      <option value="mumbai">Mumbai</option>
+      <option value="pune">Pune</option>
+      <option value="nagpur">Nagpur</option>
+      <option value="nashik">Nashik</option>
+    </select>
+  </div>
+
+  <div class="mb-3 text-start">
+    <label class="form-label fw-bold">Pincode</label>
+    <select class="form-select">
+      <option selected disabled>Select your pincode</option>
+      <option value="400001">400001</option>
+      <option value="400002">400002</option>
+      <option value="400003">400003</option>
+      <option value="400004">400004</option>
+    </select>
+  </div>
+
+
+
+                 <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">Address</label>
+                  <textarea class="form-control" rows="2" placeholder="Enter your Complete address(Residencial/Registered)"></textarea> 
+                </div>
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold"> Permanent Address</label>
+                  <textarea class="form-control" rows="2" placeholder="Enter your Corporate address(Corporate office/Branch)"></textarea> 
+                </div>
+              
+              <!-- Buttons -->
+                <div class="d-flex justify-content-between">
+                   <a href="/add_user" class="btn btn-outline-secondary">← Back</a>
+                  <a href="/review" class="btn btn-primary">Submit →</a>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</body>
+</html>

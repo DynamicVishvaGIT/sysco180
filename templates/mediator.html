@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {% include 'head.html' %}
+
+</head>
+<body>
+    <div class="login_page">
+          <div class="login_a">
+            <div>
+              <img src="/static/assets/images/final_logo_w.avif" class="final_logo mb-4" />
+            </div>
+            <h1 class="hero-title">Streamlined Digital Arbitration Platform</h1>
+            <p class="hero-desc mb-3">
+              Efficiently manage institutional arbitration cases from intake to
+              award. Designed for banks, administrators, and arbitrators.
+            </p>
+          </div>
+
+
+                <div class="login_form">
+  <div class="d-flex justify-content-center align-items-center" style="min-height:100vh;">
+    <div class="useradd_d pd">
+
+      <!-- Top Form Section inside login_form -->
+      <div class="login_form_header text-center mb-4">
+        <div class="header-icon mb-2">
+          <i class="bi bi-person-badge" style="font-size: 40px; color:#0b3b5e;"></i>
+        </div>
+        <h4>Mediator Sign Up Form</h4>
+        <p class="text-muted">Fill all mandatory fields to complete your profile</p>
+      </div>
+
+      <!-- Form Start -->
+      <form id="mediatorForm">
+
+        <!-- SECTION A — Personal Details -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section A — Personal Details</label>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Full Name *</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Date of Birth *</label>
+              <input type="date" class="form-control" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Gender *</label>
+              <select class="form-select" required>
+                <option disabled selected>Select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Nationality *</label>
+              <input type="text" class="form-control" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Permanent Address *</label>
+            <textarea class="form-control" rows="2" required></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Mobile Number *</label>
+              <input type="tel" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Email ID *</label>
+              <input type="email" class="form-control" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION B — Professional Details -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section B — Professional Details</label>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Current Occupation / Designation *</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Organization / Firm Name *</label>
+              <input type="text" class="form-control" required>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Office Address *</label>
+            <textarea class="form-control" rows="2" required></textarea>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Professional Contact No.</label>
+              <input type="tel" class="form-control">
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Official Email ID</label>
+              <input type="email" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION C — Qualifications -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section C — Qualifications</label>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Qualification *</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Institution / University *</label>
+              <input type="text" class="form-control" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Year of Passing *</label>
+              <input type="number" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Specialization (if any)</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION D — Memberships / Associations -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section D — Memberships / Associations</label>
+          <div class="mb-3">
+            <label class="form-label">Memberships *</label>
+            <input type="text" class="form-control" required>
+          </div>
+        </div>
+
+        <!-- SECTION E — Mediation Experience -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section E — Mediation & ADR Experience</label>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Number of Mediations Conducted *</label>
+              <input type="number" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Sectors of Experience *</label>
+              <input type="text" class="form-control" required>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Years of Experience *</label>
+              <input type="number" class="form-control" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Mediation / Conciliation Experience</label>
+              <input type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION F — Trainings / Certifications -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section F — Trainings / Certifications</label>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Enter trainings/certifications">
+          </div>
+        </div>
+
+        <!-- SECTION G — Areas of Specialization -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section G — Areas of Specialization *</label>
+          <div class="mb-3">
+            <input type="text" class="form-control" required>
+          </div>
+        </div>
+
+        <!-- SECTION H — Language Proficiency -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section H — Language Proficiency *</label>
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="English mandatory, others optional" required>
+          </div>
+        </div>
+
+        <!-- SECTION I — Declaration -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section I — Declaration & Disclosure *</label>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              <input type="text" class="form-control" placeholder="Full Name" required>
+            </div>
+            <div class="col-md-4 mb-3">
+              <input type="date" class="form-control" required>
+            </div>
+            <div class="col-md-4 mb-3">
+              <input type="text" class="form-control" placeholder="Place" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION J — Documents to be Attached -->
+        <div class="section-box">
+          <label class="form-label fw-bold section-title">Section J — Documents to be Attached *</label>
+          <div class="mb-3"><label class="form-label">Upload Updated CV / Profile *</label><input type="file" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label">Upload Photo ID Proof (Aadhar / Passport) *</label><input type="file" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label">Upload PAN Card *</label><input type="file" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label">Upload Passport Size Photograph *</label><input type="file" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label">Upload Educational Certificates *</label><input type="file" class="form-control" required></div>
+          <div class="mb-3"><label class="form-label">Upload Membership Certificates *</label><input type="file" class="form-control" required></div>
+        </div>
+
+        <!-- Buttons -->
+        <!-- Buttons -->
+            <div class="d-flex justify-content-between mt-4">
+            <a href="/add_user" class="btn btn-outline-secondary">← Back</a>
+            <a href="/review" class="btn btn-primary">Submit →</a>
+            </div>
+
+
+      </form>
+    </div>
+  </div>
+</div>
+
+            
+ 
+  </div>
+
+    {% include 'script.html' %}
+</body>
+</html>

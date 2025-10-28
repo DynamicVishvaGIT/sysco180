@@ -1,0 +1,64 @@
+
+ <header class="topbar">
+      <div class="container-fluid d-flex align-items-center justify-content-between py-2">
+        <!-- LEFT -->
+        <div class="d-flex align-items-center">
+             <div>
+                 <img src="/static/assets/images/final_logo.png" width="80px">
+            </div>
+
+            <!-- NAV LINKS moved beside Bank Portal -->
+            <div class="d-flex align-items-center ms-4 gap-3">
+                <a href="a_dashboard.php" class="nav-link small text-muted btn btn-upload">
+                    <i class="bi bi-bar-chart-fill me-2"></i> Dashboard
+                </a>
+            
+                <a href="assigned_cases.php" class="nav-link small text-muted btn-upload">
+                    <i class="bi bi-file-earmark-text me-1"></i> Assigned Cases
+                </a>
+                
+                <a href="hearings.php" class="nav-link small text-muted btn-upload">
+                    <i class="bi bi-file-earmark-text me-1"></i> Hearnings
+                </a> 
+
+
+
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="d-flex align-items-center gap-3">
+                <div class="dropdown">
+                 <button class="btn btn-switch btn-sm dropdown-toggle" type="button" 
+                    data-bs-toggle="dropdown" aria-expanded="false">Switch Role</button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="../bank_user/b_dashboard.php">Bank/Individual</a></li>
+                    <li><a class="dropdown-item" href="../sysco_admin/s_dashboard.php">Sysco180 Admin</a></li>
+                    <li><a class="dropdown-item" href="#">Arbitrator</a></li>
+                    <li><a class="dropdown-item" href="../mediator/m_dashboard.php">Mediator</a></li>
+                    </ul>
+                </div>
+            <div class="position-relative">
+              <i class="bi bi-bell fs-5 text-dark"></i>
+              <span class="notif-badge">3</span>
+            </div>
+
+             <div class="dropdown">
+                <button class="btn p-0 border-0 bg-transparent dropdown-toggle" type="button"
+                id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+             <div class="user-circle">RK</div>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end mt-2 shadow" aria-labelledby="userDropdown">
+                 <li><h6 class="dropdown-header">Rajesh Kumar</h6></li>
+                 <li><span class="dropdown-item-text text-muted small">Bank User</span></li>
+                 <li><hr class="dropdown-divider"></li>
+                 <li><a class="dropdown-item" href="#">Profile</a></li>
+                 <li><a class="dropdown-item" href="#">Settings</a></li>
+                 <li><a class="dropdown-item" href="../login.php">Log out</a></li>
+                </ul>
+            </div>
+     
+        </div>
+      </div>
+      </div>
+    </header>

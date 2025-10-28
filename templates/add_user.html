@@ -1,0 +1,127 @@
+ <!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>New User Registration — Sysco180</title>
+
+    <!-- Bootstrap & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet ">
+    <link href="/static/assets/css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <div class="login_page">
+        <div class="login_a">
+        <div>
+          <img src="/static/assets/images/final_logo_w.avif" class="final_logo mb-4" />
+        </div>
+        <h1 class="hero-title">Streamlined Digital Arbitration Platform</h1>
+        <p class="hero-desc mb-3">
+          Efficiently manage institutional arbitration cases from intake to
+          award. Designed for banks, administrators, and arbitrators.
+        </p>
+        </div>
+
+        <div class="login_form">
+
+            <div class="d-flex justify-content-center align-items-center" style="min-height:100vh;">
+                <div class="useradd_d pd">
+            <!-- Stepper -->
+                    <div class="d-flex justify-content-center mb-3 align-items-center stepper">
+                <div
+                    class="rounded-circle text-white d-flex align-items-center justify-content-center step active-step">
+                    1
+                </div>
+                <div class="line"></div>
+                <div
+                    class="rounded-circle text-white d-flex align-items-center justify-content-center step inactive-step">
+                    2
+                </div>
+                <div class="line"></div>
+                <div
+                    class="rounded-circle text-white d-flex align-items-center justify-content-center step inactive-step">
+                    3
+                </div>
+            </div>
+
+            <h5 class="text-center mb-2">New User Registration</h5><br><br>
+            <div class="text-center mb-2">
+                <i class="fa fa-user-plus" style="font-size:28px; color:#0b3b5e;"></i>
+            </div>
+            <p class="text-center text-muted">Join Sysco180</p>
+            <p class="text-center" style="font-size:14px;color:#6c757d;">
+                Register as a new user on our arbitration platform
+            </p>
+
+            <!-- Registration Type -->
+          <div class="mb-3 text-start">
+                <label class="form-label fw-bold">Select Registration Type</label>
+                    <select class="form-select" id="regType">
+                        <option value="" selected>Choose your registration type</option>
+                        <option value="Arbitrator">Arbitrator</option>
+                        <option value="Mediator">Mediator</option>
+                        <option value="Bank/Individual">Bank/Individual</option>
+                    </select>
+            </div>
+
+
+            <!-- Terms & Conditions -->
+            <label class="fw-bold d-block mb-1 text-start">Terms & Conditions</label>
+            <div class="terms-box mb-2 p-2"
+                style="background:#f8f9fa; border-radius:8px; font-size:13px;">
+                <ul>
+                    <li>Maintain confidentiality of all case information</li>
+                    <li>Comply with arbitration ethics and professional standards</li>
+                    <li>Provide accurate and truthful information during registration</li>
+                    <li>Follow platform policies and procedures</li>
+                    <li>Participate in required training and certification programs</li>
+                </ul>
+                <p>
+                    All personal information will be handled in accordance with our privacy policy.
+                    The platform is not intended for collecting PII or securing sensitive personal data.
+                </p>
+            </div>
+
+            <!-- Checkbox -->
+            <div class="form-check text-start mb-3">
+                <input class="form-check-input" type="checkbox" id="termsCheck">
+                <label class="form-check-label small" for="termsCheck">
+                    I accept the <b>Terms & Conditions</b> and <b>Privacy Policy</b>
+                </label>
+            </div>
+
+
+                <!-- Buttons -->
+            <div class="d-flex justify-content-between">
+              <a href="/add_user" class="btn btn-outline-secondary">← Back</a>
+              <a href="review_submit.php" class="btn btn-primary">Continue →</a>
+
+            </div>
+
+            </div>
+
+          
+        </div>
+
+
+     {% include 'script.html' %}
+
+</body>   
+</html>
+
+
+
+
+
+    
+
+
+
+
+     
+
+
