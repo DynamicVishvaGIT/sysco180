@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include 'sysco_admin/head.html' %}
+</head>
+<body>
+
+    {% include 'sysco_admin/header.html' %}
+
+    <div class="container-fluid mt-3">
+
+        <div class="card p-3 mx-5 mb-4 my-6 mt-4 rounded">
+
+            <div class="row">
+
+                <div class="col-lg-12 mb-4">
+                    <div class="page_head">
+                        <h2>Upload Cases</h2>
+                        <button class="btn btn-outline-dark custom-decline"><i class="fa-solid fa-download"></i> Download Template</button>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                    <div class="nav_sec mb-3" id="nav-tab" role="tablist">
+                        <button class="nav_link active" id="bulk_upload-tab" data-bs-toggle="tab" data-bs-target="#bulk_upload" type="button" role="tab" aria-controls="bulk_upload" aria-selected="true">Bulk Upload</button>
+                        <button class="nav_link" id="single_case-tab" data-bs-toggle="tab" data-bs-target="#single_case" type="button" role="tab" aria-controls="single_case" aria-selected="false">Single Case</button>
+                    </div>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade active show text-center bulk_upload_tab" id="bulk_upload" role="tabpanel" aria-labelledby="bulk_upload-tab">
+                        
+                            <div class="mb-3 text-center">
+                                <label class="form-label">Select Bank Name</label>
+                                <div class="d-inline-block position-relative">
+                                    <select class="form-select form_control" style="width:auto; min-width:150px; text-align:center; appearance: none; padding-right: 25px;">
+                                        <option selected disabled>-- Choose Bank --</option>
+                                        <option>HDFC Bank</option>
+                                        <option>ICICI Bank</option>
+                                        <option>SBI Bank</option>
+                                        <option>Axis Bank</option>
+                                    </select>
+                                    <i class="fa-solid fa-caret-down position-absolute" style="right:8px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
+                                </div>
+                            </div>
+
+
+                            <div class="u_icon mt-2">
+                                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                            </div>
+                                <p class="mb-1">Upload bulk cases file</p>
+                                <span>Drag and drop your Excel or CSV file here, or click to browse</span>
+                                <div class="my-3"><label for="choose_file" class="choose_file_btn">Choose File <input type="file" name="" id="choose_file" class="d-none"></label></div>
+                                
+                                <div><button class="download_btn"><i class="fa-solid fa-download"></i> Download Template</button></div>
+                            
+                        </div>
+
+                        <div class="tab-pane fade single_case_tab" id="single_case" role="tabpanel" aria-labelledby="single_case-tab">
+                            <div class="heading">
+                              <h2>Create Single Case</h2>
+                            </div>
+                            <form action="">
+                                <div class="row">
+
+                        
+                                <!-- Intent Ref No -->
+                                <div class="col-lg-6 mb-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Intent Ref No</label>
+                                        <input type="text" class="form-control form_control" name="intent_ref_no">
+                                    </div>
+                                </div>
+
+                                <!-- Case Nos -->
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control form_control" name="email_add">
+                                </div>
+
+                                <!-- Loan Agreement / Prospect No -->
+                                <div class="col-lg-6 mb-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Loan Agreement / Prospect No</label>
+                                        <input type="text" class="form-control form_control" name="loan_agreement_no">
+                                    </div>
+                                </div>
+
+                                <!-- Cust Name 1 -->
+                                <div class="col-lg-6 mb-4">
+                                    <div class="mb-3">
+                                        <label class="form-label">Cust Name 1</label>
+                                        <input type="text" class="form-control form_control" name="cust_name_1">
+                                    </div>
+                                </div>
+
+                                <!-- Address -->
+                            <div class="col-lg-12 mb-3">
+                                    <div class="mb-3">
+                                        <label class="form-label">Address</label>
+                                        <textarea class="form-control form_control" name="address" rows="3" placeholder="Enter address"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mb-3">
+                        <label class="form-label">Party Details</label>
+                        <div id="parties-section">
+
+                            <!-- Party 1 always present -->
+                            <div class="row mb-2 party-group align-items-center" data-party="1">
+                                <div class="col-lg-4">
+                                    <input type="text" class="form-control form_control" name="party_1" placeholder="Name">
+                                </div>
+                                <div class="col-lg-6">
+                                    <textarea class="form-control form_control" name="party_1_add" rows="2" placeholder="Address"></textarea>
+                                </div>
+                                <div class="col-lg-2 d-flex justify-content-start">
+                                    <button type="button" class="btn btn-success w-100 add-party-btn">+ Add</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Pending Due Amt</label>
+                    <input type="text" class="form-control form_control" name="pending_due_amt">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Total Outstanding Amt</label>
+                    <input type="text" class="form-control form_control" name="total_outstanding_amt">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Outstanding Amt Date</label>
+                    <input type="date" class="form-control form_control" name="outstanding_amt_date">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Product</label>
+                    <input type="text" class="form-control form_control" name="product">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Adv Name</label>
+                    <input type="text" class="form-control form_control" name="adv_name">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Arb Name</label>
+                    <input type="text" class="form-control form_control" name="arb_name">
+                </div>
+
+                <div class="col-lg-12 mb-3">
+                    <label class="form-label">Arb Address</label>
+                <textarea class="form-control form_control" name="address" rows="3" placeholder="Enter address"></textarea>
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">LRN Date</label>
+                    <input type="date" class="form-control form_control" name="lrn_date">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">LRN Ref No</label>
+                    <input type="text" class="form-control form_control" name="lrn_ref_no">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Loan Amount</label>
+                    <input type="text" class="form-control form_control" name="loan_amount">
+                </div>
+
+                <div class="col-lg-6 mb-4">
+                    <label class="form-label">Loan Agreement Date</label>
+                    <input type="date" class="form-control form_control" name="loan_agreement_date">
+                </div>
+
+            
+
+                <div class="col-lg-12">
+                    <button type="submit" class="sub_btn w-100">Create Case</button>
+                </div>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    {% include 'sysco_admin/script.html' %}
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'mediator/head.html' %}
+</head>
+<body>
+    
+     {% include 'mediator/header.html' %}
+
+    <div class="container-fluid mt-3">
+        <div class="card p-3 mx-5 mb-4 my-6 mt-4 rounded">
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <div class="page_head">
+                        <h2>Mediation Case Details - MED-20250901-001</h2>
+                    </div>
+            
+
+                    <div class="col-lg-12">
+                        <div class="nav_sec mb-3" id="nav-tab" role="tablist">
+                            <button class="nav_link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+                            <button class="nav_link" id="document-tab" data-bs-toggle="tab" data-bs-target="#document" type="button" role="tab" aria-controls="document" aria-selected="false">Documents</button>
+                            <button class="nav_link" id="single_case-tab" data-bs-toggle="tab" data-bs-target="#single_case" type="button" role="tab" aria-controls="actions" aria-selected="false">Sessions</button>
+                            <button class="nav_link" id="single_case-tab" data-bs-toggle="tab" data-bs-target="#single_case" type="button" role="tab" aria-controls="single_case" aria-selected="false">Settlement</button>
+                            <button class="nav_link" id="single_case-tab" data-bs-toggle="tab" data-bs-target="#single_case" type="button" role="tab" aria-controls="single_case" aria-selected="false">Audit</button>
+                            <button class="nav_link" id="actions-tab" data-bs-toggle="tab" data-bs-target="#actions" type="button" role="tab" aria-controls="actions" aria-selected="false">Actions</button>
+                        </div>
+
+
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade active show text-center overview_tab" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+                                <div class="case-all-box p-3 text-start">
+                                    <h5 class="mb-3">Case Information</h5>
+                                    <div class="case-info">
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6 text-start pe-6">
+                                                    <strong>Case ID:</strong> MED-20250901-001
+                                                    </div>
+                                                    <div class="col-md-6 text-start ps-4">
+                                                    <strong>Parties:</strong> HDFC Bank vs Rajesh Enterprises
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6 text-start pe-4">
+                                                    <strong>Outstanding Amount:</strong> ₹8,50,000
+                                                    </div>
+                                                    <div class="col-md-6 text-start ps-4">
+                                                    <strong>Agreement No:</strong> AGR-12348
+                                                    </div>
+                                                </div>
+
+                                                <div class="row mb-3">
+                                                    <div class="col-md-6 text-start pe-4">
+                                                    <strong>LRN:</strong>LRN-9991
+                                                    </div>
+                                                    <div class="col-md-6 text-start ps-4">
+                                                    <strong>Status:</strong> <span class="status-badge">Mediation Assigned</span>
+                                                    </div>
+                                                </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="tab-pane fade document_tab" id="document" role="tabpanel" aria-labelledby="document-tab">
+                                <div class="case-all-box p-3 text-start">
+                                        <h5 class="mb-3">Case Documents</h5>
+                
+                                        <div class="doc-item d-flex justify-content-between align-items-center p-2 mb-2 border rounded">
+                                            <span>Loan Agreement - AGR-12348.pdf</span>
+                                            <a href="" download class="btn btn-light">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="doc-item d-flex justify-content-between align-items-center p-2 mb-2 border rounded">
+                                            <span>Mediation Request.pdf</span>
+                                            <a href="" download class="btn btn-light">
+                                                <i class="bi bi-download"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                            </div>
+
+                            <div class="tab-pane fade actions_tab" id="actions" role="tabpanel" aria-labelledby="actions-tab">
+                                <div class="case-all-box p-3 text-start">
+                                    <h5 class="mb-3">Mediation Actions</h5>
+
+                                    <!-- Appointment Letter Section -->
+                                    <div class="mb-4 border rounded p-3">
+                                        <h6> Mediation Appointment </h6>
+                                        <p class="text-muted small">Please review the mediation appointment  and provide your acceptance.</p>
+                                        <div class="d-flex gap-2">
+                                            <button class="btn btn-outline-dark custom-decline">
+                                                <i class="bi bi-download"></i> Download Appointment
+                                            </button>
+                                            <button class="btn btn-outline-danger">Decline</button>
+                                            <button class="btn btn-primary">Accept Appointment</button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Disclosure & Consent Section -->
+                                    <div class="border rounded p-3">
+                                        <h6>Disclosure & Consent</h6>
+                                        <p class="text-muted small">Upload signed disclosure and consent form mediation.</p>
+                                        <button class="btn btn-outline-dark custom-decline">
+                                            <i class="bi bi-upload"></i> Upload Disclosure
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>       
+                        
+                </div>   
+                       
+                       
+            </div>     
+        </div>
+    </div>
+
+    {% include 'mediator/script.html' %}
+</body>
+</html>
+

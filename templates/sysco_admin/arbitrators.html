@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   {% include 'sysco_admin/head.html' %}
+</head>
+<body>
+
+    {% include 'sysco_admin/header.html' %}
+
+    <div class="container-fluid mt-3 ">
+        <div class="card p-3 mx-5 mb-4 my-6 mt-4 rounded">
+
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <div class="page_head">
+                        <h2>Arbitrator Management</h2>
+                        <a href="addarbitrator.php" class="add_btn"><i class="fa-solid fa-user-plus"></i> Add Arbitrator</a>
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div class="nav_sec mb-3" id="nav-tab" role="tablist">
+                        <button class="nav_link active" id="active-arbitrator-tab" data-bs-toggle="tab" data-bs-target="#active_arbitrator" type="button" role="tab" aria-controls="bulk_upload" aria-selected="true">Active Arbitrator</button>
+                        <button class="nav_link" id="registration_request-tab" data-bs-toggle="tab" data-bs-target="#registration_requests" type="button" role="tab" aria-controls="single_case" aria-selected="false">Registration Requests</button>
+                        <button class="nav_link" id="inactive_suspended-tab" data-bs-toggle="tab" data-bs-target="#inactive_suspended" type="button" role="tab" aria-controls="single_case" aria-selected="false">Inactive Suspended</button>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="active_arbitrator" role="tabpanel" aria-labelledby="active-arbitrator-tab"> 
+        <div class="table-responsive">
+            <table class="table_sec align-middle">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Specialization</th>
+                        <th>Active Cases</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Arb. Dr. S. Nair</td>
+                        <td>Banking</td>
+                        <td>12</td>
+                        <td>s.nair@arbitrators.in</td>
+                        <td><span class="active_btn">Active</span></td>
+                       <td>
+                            <div class="dropdown">
+                                <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href=""><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-regular fa-pen-to-square me-2"></i> Edit Case</a></li>
+                                    <!-- <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li>-->
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Arb. R. Sharma</td>
+                        <td>Commercial</td>
+                        <td>8</td>
+                        <td>r.sharma@arbitrators.in</td>
+                        <td><span class="active_btn">Active</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-regular fa-pen-to-square me-2"></i> Edit Case</a></li>
+                                    <!-- <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li>-->
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Arb. M. Gupta</td>
+                        <td>Financial</td>
+                        <td>15</td>
+                        <td>m.gupta@arbitrators.in</td>
+                        <td><span class="active_btn">Active</span></td>
+                        <td>
+                            <div class="dropdown">
+                                <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots"></i>
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <li><a class="dropdown-item" href="#"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                    <li><a class="dropdown-item" href="#"><i class="fa-regular fa-pen-to-square me-2"></i> Edit Case</a></li>
+                                    <!-- <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li>-->
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+        <div class="tab-pane fade" id="registration_requests" role="tabpanel" aria-labelledby="registration_request-tab">
+            <form action="">
+                <div class="row">
+                <h5 class="mb-1">Pending Registration Requests</h5>
+                <p class="text-muted mb-3">Review and approve new arbitrator applications</p>
+
+                <!-- Request Card 1 -->
+                <div class="request_card mb-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex">
+                                <div class="avatar me-3">
+                                <i class="fa-solid fa-user-circle fa-3x text-secondary"></i>
+                                </div>
+                                <div>
+                                <h6 class="mb-1">Dr. Rajesh Kumar</h6>
+                                <p class="small text-muted mb-1">Senior Advocate at Supreme Court Bar Association</p>
+                                <p class="small text-muted">Request ID: ARB-REQ-1641234567890</p>
+                                </div>
+                        </div>
+                        <span class="status_badge pending">Pending Review</span>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <h6 class="small text-muted">CONTACT INFO</h6>
+                            <p class="mb-1"><i class="fa-solid fa-envelope me-2"></i> rajesh.kumar@legalpro.in</p>
+                            <p class="mb-1"><i class="fa-solid fa-phone me-2"></i> +91 98765 43210</p>
+                            <p class="mb-1"><i class="fa-solid fa-location-dot me-2"></i> New Delhi, Delhi</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="small text-muted">EXPERIENCE</h6>
+                            <p class="mb-1"><i class="fa-solid fa-briefcase me-2"></i> 20-25 years</p>
+                            <p class="mb-1"><i class="fa-solid fa-money-bill me-2"></i> Fee: ₹100000 - ₹200000</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="small text-muted">SPECIALIZATION</h6>
+                            <span class="spec_badge">Banking & Financial Services</span>
+                            <span class="spec_badge">Commercial Disputes</span>
+                            <span class="spec_badge">+1 more</span>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <p class="text-muted small">Submitted on 08 Jan 2025</p>
+
+                    <div class="d-flex justify-content-end gap-2">
+                        <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-eye me-1"></i> View Details</button>
+                        <button type="button" class="btn btn-outline-danger"><i class="fa-solid fa-xmark me-1"></i> Reject</button>
+                        <button type="button" class="btn btn-success"><i class="fa-solid fa-check me-1"></i> Approve</button>
+                    </div>
+                </div>
+
+                <!-- Request Card 2 -->
+                <div class="request_card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex">
+                            <div class="avatar me-3">
+                                <i class="fa-solid fa-user-circle fa-3x text-secondary"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Ms. Priya Sharma</h6>
+                                <p class="small text-muted mb-1">Partner at Sharma & Associates</p>
+                                <p class="small text-muted">Request ID: ARB-REQ-1641234567891</p>
+                            </div>
+                        </div>
+                        <span class="status_badge review">Under Review</span>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4">
+                            <h6 class="small text-muted">CONTACT INFO</h6>
+                            <p class="mb-1"><i class="fa-solid fa-envelope me-2"></i> priya.sharma@lawfirm.com</p>
+                            <p class="mb-1"><i class="fa-solid fa-phone me-2"></i> +91 98123 45678</p>
+                            <p class="mb-1"><i class="fa-solid fa-location-dot me-2"></i> Mumbai, Maharashtra</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="small text-muted">EXPERIENCE</h6>
+                            <p class="mb-1"><i class="fa-solid fa-briefcase me-2"></i> 15-20 years</p>
+                            <p class="mb-1"><i class="fa-solid fa-money-bill me-2"></i> Fee: ₹50000 - ₹100000</p>
+                        </div>
+                        <div class="col-md-4">
+                            <h6 class="small text-muted">SPECIALIZATION</h6>
+                            <span class="spec_badge">Real Estate</span>
+                            <span class="spec_badge">Corporate Law</span>
+                            <span class="spec_badge">+1 more</span>
+                        </div>
+                    </div>
+
+                        <hr>
+                        <p class="text-muted small">Submitted on 09 Jan 2025</p>
+
+                        <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-eye me-1"></i> View Details</button>
+                        </div>
+                </div>
+                </div>
+            </form>
+        </div>
+        
+        <div class="tab-pane fade" id="inactive_suspended" role="tabpanel" aria-labelledby="inactive_suspended-tab">
+
+        <div class="row">
+            <div class="col-12">
+                <div class="empty-state-card text-center">
+                    <div class="empty-icon">
+                        <i class="fas fa-users"></i>
+                    </div> 
+                    <h5 class="empty-title">No inactive arbitrators</h5>
+                    <p class="empty-text">Inactive or suspended arbitrators will appear here.</p>
+                </div>
+                </div>
+            </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+   {% include 'sysco_admin/script.html' %}
+
+</body>
+</html>

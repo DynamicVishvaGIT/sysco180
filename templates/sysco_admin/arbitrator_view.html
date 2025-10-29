@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include 'sysco_admin/head.html' %}
+</head>
+<body>
+
+  {% include 'sysco_admin/header.html' %}
+
+    <div class="container-fluid mt-3">
+        <div class="card  p-5 mx-5 mt-4"> 
+            <div class="row">
+
+                <h6 class="text-center fw-bold">Review & Submit</h6>
+                <p class="text-center text-muted mb-4">Please review your information before submitting</p>
+
+                <div class="section-box">
+                    <div class="row">
+                        <div class="col-md-6 ">
+                            <label class="form-label fw-bold section-title">Section A — Personal Details</label>
+                                <div class="review-section">
+                                    <p><strong>Full Name:</strong> <span id="reviewFullName">Manali</span></p>
+                                    <p><strong>Date of Birth:</strong> <span id="reviewDOB"></span></p>
+                                    <p><strong>Gender:</strong> <span id="reviewGender"></span></p>
+                                    <p><strong>Nationality:</strong> <span id="reviewNationality"></span></p>
+                                    <p><strong>Permanent Address:</strong> <span id="reviewAddress"></span></p>
+                                    <p><strong>Mobile:</strong> <span id="reviewMobile"></span></p>
+                                    <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+                                    <p><strong>PAN/Aadhar:</strong> <span id="reviewPAN"></span></p>
+                                    <p><strong>Passport:</strong> <span id="reviewPassport"></span></p>
+                                </div>
+                        </div>
+                        
+                        <div class="col-md-6 ">
+                                <label class="form-label fw-bold section-title">Section B — Professional Details</label>
+                                <div class="review-section">
+                                    <p><strong>Occupation / Designation:</strong> <span id="reviewOccupation"></span></p>
+                                    <p><strong>Organization / Firm:</strong> <span id="reviewOrg"></span></p>
+                                    <p><strong>Office Address:</strong> <span id="reviewOfficeAddr"></span></p>
+                                    <p><strong>Professional Contact No.:</strong> <span id="reviewProfContact"></span></p>
+                                    <p><strong>Official Email:</strong> <span id="reviewOfficialEmail"></span></p>
+                                    <p><strong>Sanad ID:</strong> <span id="reviewSanad"></span></p>
+                                    <p><strong>Website:</strong> <span id="reviewWebsite"></span></p>
+                                </div>
+                        </div>
+
+                        <div class="col-lg-12"><hr></div>
+                        <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold section-title">Section C — Qualifications</label>
+                                <div class="review-section">
+                                    <p><strong>Qualification:</strong> <span id="reviewQualification"></span></p>
+                                    <p><strong>Institution / University:</strong> <span id="reviewInstitution"></span></p>
+                                    <p><strong>Year of Passing:</strong> <span id="reviewYear"></span></p>
+                                    <p><strong>Specialization:</strong> <span id="reviewSpecialization"></span></p>
+                                </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold section-title">Section D — Professional Memberships</label>
+                                <div class="review-section">
+                                    <p><strong>Memberships:</strong> <span id="reviewMemberships"></span></p>
+                                    
+                                </div>
+                        </div>
+                            
+                        <div class="col-lg-12"><hr></div>
+                        <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold section-title">Section E — Arbitration & ADR Experience</label>
+                        <div class="review-section">
+                            <p><strong>Arbitrations Conducted:</strong> <span id="reviewArbConducted"></span></p>
+                            <p><strong>Sectors of Experience:</strong> <span id="reviewSectors"></span></p>
+                            <p><strong>Years of Experience:</strong> <span id="reviewExpYears"></span></p>
+                            <p><strong>Mediation / Conciliation Experience:</strong> <span id="reviewMediation"></span></p>
+                        </div>
+                        </div>
+                            
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold section-title">Section F — Trainings / Certifications</label>
+                            <div class="review-section">
+                                <p><strong>Trainings / Certifications:</strong> <span id="reviewTrainings"></span></p>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-12"><hr></div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold section-title">Section G — Areas of Specialization</label>
+                            <div class="review-section">
+                            <p><strong>Specialization Areas:</strong> <span id="reviewAreas"></span></p>
+                            </div>
+                        </div>
+                            
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold section-title">Section H — Language Proficiency</label>
+                                <div class="review-section">
+                                <p><strong>Languages:</strong> <span id="reviewLanguages"></span></p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12"><hr></div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold section-title">Section I — Declaration & Disclosur</label>
+                                <div class="review-section">
+                                <p><strong>Full Name:</strong> <span id="reviewDeclName"></span></p>
+                                <p><strong>Date:</strong> <span id="reviewDeclDate"></span></p>
+                                <p><strong>Place:</strong> <span id="reviewDeclPlace"></span></p>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                                <label class="form-label fw-bold section-title">Section J — Documents to be Attached </label>
+                                <div class="review-section">
+                                    <div>
+                                    <strong>Uploaded CV / Profile *</strong>
+                                    <a href="uploads/cv.pdf" style="margin-left:119px;" class="view-link a">View</a>
+                                    </div>
+                                    <div >
+                                    <strong>Photo ID Proof (Aadhar / Passport) *</strong>
+                                    <a href="uploads/cv.pdf" style="margin-left:14px;" class="view-link a">View</a>
+                                    </div>
+                                    <div >
+                                    <strong>Uploaded PAN Card *</strong>
+                                    <a href="uploads/cv.pdf" style="margin-left:133px;" class="view-link a">View</a>
+                                    </div>
+                                    <div >
+                                    <strong>Uploaded Passport Size Photograph *</strong>
+                                    <a href="uploads/cv.pdf" style="margin-left:6px;" class="view-link a">View</a>
+                                    </div>
+                                    <div >
+                                    <strong>Uploaded Educational Certificates *</strong>
+                                    <a href="uploads/cv.pdf" style="margin-left:18px;" class="view-link a">View</a>
+                                    </div>
+                                    <div >
+                                    <strong>Uploaded Bar Council Certificate & Sanad ID (if applicable)</strong>
+                                    <a href="uploads/cv.pdf" style="margin-left:6px;" class="view-link a">View</a>
+                                    </div>
+                                    <div >
+                                    <strong>Uploaded Professional Membership Certificates *</strong>
+                                    <a href="uploads/cv.pdf" style="margin-left:76px;" class="view-link a">View</a>
+                                    </div>
+                                </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Buttons -->
+                        <div class="d-flex justify-content-between">
+                        <!-- <button class="btn btn-outline-secondary" onclick="window.location.href='personal_info.php'">← Back</button>-->
+                        <a href="#" onclick="history.back(); return false;" class="btn btn-outline-secondary">← Back</a>
+
+                        <button class="btn btn-primary" id="submitBtn">Submit Registration →</button>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+    
+
+    {% include 'sysco_admin/script.html' %}
+    
+</body>
+
+</html>

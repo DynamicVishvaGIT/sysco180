@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   {% include 'arbitrator/head.html' %}
+    {% include 'mediator/head.html' %}
 </head>
 <body>
     
-    {% include 'arbitrator/header.html' %}
+    {% include 'mediator/header.html' %}
 
     <div class="container-fluid mt-3">
-        <div class="card p-3 mx-5 mb-4 my-6 mt-4 "> 
+
+         <div class="card p-3 mx-5 mb-4 my-6 mt-4"> 
             <div class="row">
                 <div class="col-lg-12 mb-4">
                     <div class="page_head">
@@ -40,47 +41,47 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>PROS-20250901-001</td>
-                                <td>SBI vs Amit Kumar</td>
-                                <td>₹12,50,000</td>
-                                <td><span class="status blue">Pending Validation</span></td>
-                                <td>First Hearing</td>
+                                <td>MED-20250901-001</td>
+                                <td>HDFC Bank vs Rajesh Enterprises</td>
+                                <td>₹8,50,000</td>
+                                <td><span class="status blue">Mediation Assigned</span></td>
+                                <td>Intial Mediation</td>
                                 <td>Jan 15,2025,2:00 PM</td>
                                 <td class="actions-cell">
-                                    <div class="d-flex align-items-center gap-2">
-                                        <!--<button class="btn btn-outline-dark custom-decline">Decline</button>-->
+                                   <div class="d-flex align-items-center gap-2">
+                                       
                                         <button class="btn btn-primary custom-accept">Accept</button>
                                         <div class="dropdown">
                                             <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" href="/assigned_cases_view"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                                <li><a class="dropdown-item" href="med_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fa-regular fa-pen-to-square me-2"></i>Edit Case</a></li>
                                                 <!-- <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li> -->
                                             </ul>
                                         </div>
                                     </div>
-                                </td> 
+                                </td>
                             </tr>
 
                             <tr>
-                                <td>PROS-20250901-002</td>
-                                <td>HDFC vs Priya Singh</td>
-                                <td>₹8,50,000</td>
-                                <td><span class="status-hearing">1st Hearing</span></td>
-                                <td>Stament of claim</td>
+                                <td>MED-20250901-002</td>
+                                <td>ICIC Bank vs Sharma Industries</td>
+                                <td>₹12,50,000</td>
+                                <td><span class="status-hearing">Mediation Session</span></td>
+                                <td>Settlement Discussion</td>
                                 <td>Jan 20,2025,11:00 PM</td>
-                               <td class="actions-cell">
+                                <td class="actions-cell">
                                     <div class="d-flex align-items-center gap-2">
-                                        
+                                      
                                         <button class="btn btn-primary custom-accept">Accept</button>
                                         <div class="dropdown">
                                             <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" href="ass_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                                <li><a class="dropdown-item" href="med_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fa-regular fa-pen-to-square me-2"></i>Edit Case</a></li>
                                                 <!-- <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li> -->
                                             </ul>
@@ -89,22 +90,22 @@
                                 </td>
                             </tr>
                             <tr>	
-                                <td>PROS-20250901-003</td>
-                                <td>ICICI vs Rajesh Patel</td>
-                                <td>₹21,00,000</td>
-                                <td><span class="status pending_validation">2nd Hearings</span></td>
-                                <td>Section 17 app</td>
+                                <td>MED-20250901-003</td>
+                                <td>SBI vs Kumar Textiles</td>
+                                <td>₹9,00,000</td>
+                                <td><span class="status pending_validation">Final Settlement</span></td>
+                                <td>Final Settlement</td>
                                 <td>Jan 25,2025,3:00 AM</td>
                                 <td class="actions-cell">
                                    <div class="d-flex align-items-center gap-2">
-                                      
+                                        
                                         <button class="btn btn-primary custom-accept">Accept</button>
                                         <div class="dropdown">
                                             <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                                 <i class="bi bi-three-dots"></i>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" href="ass_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                                <li><a class="dropdown-item" href="med_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
                                                 <li><a class="dropdown-item" href="#"><i class="fa-regular fa-pen-to-square me-2"></i>Edit Case</a></li>
                                                 <!-- <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li> -->
                                             </ul>
@@ -120,8 +121,7 @@
     </div>
 
 
-
-     {% include 'arbitrator/script.html' %}
+    {% include 'mediator/script.html' %}
     <script>
         new DataTable('.myTable', {
             responsive: true

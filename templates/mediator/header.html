@@ -5,28 +5,31 @@
         <!-- LEFT -->
         <div class="d-flex align-items-center">
             <div>
-                <img src="/static/assets/images/final_logo.png" width="80px">
+                 <img src="/static/assets/images/final_logo.png" width="80px">
             </div>
-             
-            <!-- <div class="ms-2 site-title">Bank Portal</div> -->
 
             <!-- NAV LINKS moved beside Bank Portal 
             <div class="d-flex align-items-center ms-4 gap-3">
-                <a href="b_dashboard.php" class="btn btn-dashboard d-flex align-items-center">
+                <a href="m_dashboard.php" class="btn btn-dashboard d-flex align-items-center">
                     <i class="bi bi-bar-chart-fill me-2"></i> Dashboard
                 </a>-->
 
 
-             <div class="d-flex align-items-center ms-4 gap-3">
-                <a href="/bank_user_dashboard" class="nav-link small text-muted btn btn-upload">
+                <div class="d-flex align-items-center ms-4 gap-3">
+                <a href="/mediator_dashboard" class="nav-link small text-muted btn btn-upload">
                     <i class="bi bi-bar-chart-fill me-2"></i> Dashboard
                 </a>
-                <a href="/upload_cases" class="nav-link small text-muted btn btn-upload">
-                    <i class="bi bi-upload me-1"></i> Upload Cases
+            
+                <a href="/mediation_cases" class="nav-link small text-muted btn-upload">
+                    <i class="bi bi-file-earmark-text me-1"></i> Mediation Cases
                 </a>
-                <a href="/my_cases" class="nav-link small text-muted btn-upload">
-                    <i class="bi bi-file-earmark-text me-1"></i> My Cases
-                </a>
+                
+                <a href="/sessions" class="nav-link small text-muted btn-upload">
+                    <i class="bi bi-file-earmark-text me-1"></i> Sessions
+                </a> 
+
+
+
             </div>
         </div>
 
@@ -36,10 +39,10 @@
                  <button class="btn btn-switch btn-sm dropdown-toggle" type="button" 
                     data-bs-toggle="dropdown" aria-expanded="false">Switch Role</button>
                     <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/bank_user_dashboard">Bank/Individual</a></li>
-                    <li><a class="dropdown-item" href="/sysco_admin_dashboard">Sysco180 Admin</a></li>
-                    <li><a class="dropdown-item" href="/arbitrator_dashboard">Arbitrator</a></li>
-                    <li><a class="dropdown-item" href="/bank_user_dashboard">Mediator</a></li>
+                    <li><a class="dropdown-item" href="../bankuser/b_dashboard.php">Bank/Individual</a></li>
+                    <li><a class="dropdown-item" href="../sysco_admin/s_dashboard.php">Sysco180 Admin</a></li>
+                    <li><a class="dropdown-item" href="../arbitrator/a_dashboard.php">Arbitrator</a></li>
+                    <li><a class="dropdown-item" href="../mediator/m_dashboard">Mediator</a></li>
                     </ul>
                 </div>
             <div class="position-relative">

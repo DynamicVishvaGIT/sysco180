@@ -1,3 +1,4 @@
+from email import header
 from django.shortcuts import render
 
 # Create your views here.
@@ -66,3 +67,65 @@ def bank_user_script(request):
 def bank_user_header(request):
     return render(request,'bank_user/header.html')
 
+
+# Mediator ------------------------------------------->
+
+def mediator_dashboard(request):
+    return render(request,'mediator/mediator_dashboard.html')       
+
+def mediator_head(request):
+    return render(request,'mediator/head.html')
+
+def mediator_script(request):
+    return render(request,'mediator/script.html')
+
+def mediator_header(request):
+    return render(request,'mediator/header.html')
+
+def mediation_cases(request):   
+    return render(request,'mediator/mediation_cases.html')
+
+def mediation_cases_view(request):   
+    return render(request,'mediator/mediation_cases_view.html')
+
+def sessions(request):   
+    return render(request,'mediator/sessions.html')
+
+
+#Sysco Admin ------------------------------------------->
+
+def sysco_admin_dashboard(request):
+    return render(request,'sysco_admin/sysco_admin_dashboard.html')
+
+def arbitrators(request):
+    return render(request,'sysco_admin/arbitrators.html')
+
+def add_arbitrator(request):
+    return render(request,'sysco_admin/add_arbitrator.html')
+
+def arbitrator_view(request):
+    return render(request,'sysco_admin/arbitrator_view.html')
+
+def cash_queue(request):
+    return render(request,'sysco_admin/cash_queue.html')
+
+def cash_queue_view(request):
+    return render(request,'sysco_admin/cash_queue_view.html')
+
+def upload_cases(request):
+    return render(request,'sysco_admin/upload_cases.html')
+
+def sysco_admin_header(request):
+    return render(request,'sysco_admin/header.html')
+
+def sysco_admin_head(request):
+    return render(request,'sysco_admin/head.html')
+
+def sysco_admin_script(request):
+    return render(request,'sysco_admin/script.html')
+
+def hearings(request):
+    return render(request,'sysco_admin/hearings.html')
+
+def template(request):
+    return render(request,'sysco_admin/templates.html')

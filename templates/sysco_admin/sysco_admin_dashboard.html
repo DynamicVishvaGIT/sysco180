@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'sysco_admin/head.html' %}
+</head>
+<body>
+   {% include 'sysco_admin/header.html' %}
+
+    <div class="container-fluid my-4 mt-3 px-5">
+        <div class="row g-3 mb-3">
+            <div class="col-md-3">
+                <div class="case-card case-purple p-3">
+                     <a href="/cash_queue" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="text-muted">Total Cases</span><br>
+                                <i class="bi bi-file-earmark-text text-primary"></i>
+                        </div>
+                        <h2 class="fw-bolder">156</h2>
+                        <small class="txt-c">All time</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+               <div class="case-card case-blue p-3">
+                  <a href="#" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-10">
+                        <span class="card-title text-muted ">Pending Validation</span><br>
+                        <i class="bi bi-clock-history"></i>
+                        </div>
+                        <h2 class="fw-bolder">23</h2>
+                        <small class="txt-c">Needs attention</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="case-card case-green p-3">
+                  <a href="#" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-10">
+                        <span class="card-title text-muted">Awaiting Assignment</span><br>
+                        <i class="fas fa-user-plus text-primary"></i>
+                        </div>
+                        <h2 class="fw-bolder">34</h2>
+                        <small class="txt-c">Ready for arbitrators</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                  <div class="case-card case-yellow p-3">
+                   <a href="#" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-10">
+                            <span class="card-title text-muted">Active</span><br>
+                            <i class="fa-solid fa-clipboard-check text-success"></i>
+                        </div>
+                        <h2 class="fw-bolder">89</h2>
+                        <small class="txt-c">In progress</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                  <div class="case-card case-brown p-3">
+                     <a href="#" class="stretched-link"></a>
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-10">
+                        <span class="card-title text-muted">Completed</span><br>
+                            <!-- <i class="bi bi-exclamation-triangle text-primary"></i> -->
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                        </div>
+                        <h2 class="fw-bolder">12</h2>
+                        <small class="txt-c">This month</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-3">
+            <div class="col-lg-12">
+                <div class="card bg-white">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between mb-2">
+                            <span class="text-muted">Recent Activity</span><br>
+                                <i class="bi bi-file-earmark-text text-primary"></i>
+                        </div>
+                        <ul class="recent_activity">
+                            <li>Case PROS-20250901-001 assigned to Arb. Dr. S. Nair <span>2 hours ago</span></li>
+                            <li>Bulk upload processed: 15 cases from HDFC Delhi <span>4 hours ago</span></li>
+                            <li>Section 17 application approved for PROS-20250830-045 <span>6 hours ago</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+      {% include 'sysco_admin/script.html' %}
+</body>
+</html>

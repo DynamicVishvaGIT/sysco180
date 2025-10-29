@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include 'sysco_admin/head.html' %}
+</head>
+<body>
+
+ {% include 'sysco_admin/header.html' %}
+
+    <div class="container-fluid mt-3">
+        <div class="card  p-5 mx-5 mt-4"> 
+            <div class="row">
+                <div class="col-lg-12 mb-4">
+                    <div class="page_head">
+                        <div>
+                            <h2>Case Queue</h2>
+                            <!-- <p class="num">1247 of 1247 cases</p> -->
+                        </div>  
+
+                        <div class="col-lg-6 text-end">
+                            <div class="table-actions">
+                                <button id="filterBtn" class="btn btn-outline-secondary" title="Filter"><i class="bi bi-funnel"></i> Filter</button>
+                                <button id="assignBtn" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#assignModal" enabled>
+                                <i class="bi bi-person-plus"></i> Assign (<span id="selectedCount">0</span>)
+                                </button>
+                            </div>
+                        </div>
+                        
+                    
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <table class="new_table table table-hover dt-responsive myTable">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="selectAll"></th>
+                                <th>Case ID</th>
+                                <th>Parties</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Uploader</th>
+                                <th>Upload Date</th>	
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><input type="checkbox" class="caseCheckbox" value="PROS-20250901-001"></td>
+                                <td>PROS-20250901-001</td>
+                                <td>SBI vs Amit Kumar</td>
+                                <td>₹12,50,000</td>
+                                <td><span class="status pending_validation">Pending Validation</span></td>
+                                <td>SBI Mumbai</td>
+                                <td>2024-12-28</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="s_cq_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-down me-2"></i>Downlaod Documents</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-plus me-2" style="color: black solid #181515ff;"></i> Add User</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="caseCheckbox" value="PROS-20250901-002"></td>
+                                <td>PROS-20250901-002</td>
+                                <td>HDFC vs Priya Singh</td>
+                                <td>₹8,50,000</td>
+                                <td><span class="status blue">Ready for Assignment</span></td>
+                                <td>HDFC Delhi</td>
+                                <td>2024-12-28</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-down me-2"></i>Downlaod Documents</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-plus me-2" style="color: black solid #181515ff;"></i> Add User</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>	
+                                <td><input type="checkbox" class="caseCheckbox" value="PROS-20250901-003"></td>
+                                <td>PROS-20250901-003</td>
+                                <td>ICICI vs Rajesh Patel</td>
+                                <td>₹21,00,000</td>
+                                <td><span class="status assigned_validation">Assigned</span></td>
+                                <td>ICICI Bangalore</td>
+                                <td>2024-12-27</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="bi bi-three-dots"></i>
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-eye me-2"></i>View</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-down me-2"></i>Downlaod Documents</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user-plus me-2" style="color: black solid #181515ff;"></i> Add User</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+                        <!-- Assign Arbitrator Modal -->
+                    <div class="modal fade" id="assignModal" tabindex="-1">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content assign-modal">
+                                <div class="modal-header">
+                                <h5 class="modal-title">Assign Arbitrator</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label class="fw-bold">Selected Cases</label>
+                                        <input type="text" id="selectedCases" class="form-control" readonly>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="fw-bold">Select Arbitrator</label>
+                                        <select class="form-select">
+                                        <option value="">Choose arbitrator</option>
+                                        <option value="Arbitrator 1">Arbitrator 1</option>
+                                        <option value="Arbitrator 2">Arbitrator 2</option>
+                                        <option value="Arbitrator 3">Arbitrator 3</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="fw-bold">Appointment Letter Preview</label>
+                                        <textarea class="form-control" readonly>Appointment letter will be generated with case details...
+                                        </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary">
+                                        <i class="bi bi-send"></i> Send Appointment Letter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+    {% include 'sysco_admin/script.html' %}
+    <script>
+        new DataTable('.myTable', {
+            responsive: true
+        });
+    </script>
+</body>
+
+</html>

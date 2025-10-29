@@ -1,63 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   {% include 'arbitrator/head.html' %}
+   {% include 'mediator/head.html' %}
 </head>
 <body>
     
-     {% include 'arbitrator/header.html' %}
+    {% include 'mediator/header.html' %}
 
     <div class="container-fluid my-4 mt-3 px-5">
         <div class="row g-3">
             <div class="col-md-3">
                 <div class="case-card case-purple p-3">
-                      <a href="/assigned_cases" class="stretched-link"></a>
+                      <a href="mediation_cases.php" class="stretched-link"></a>
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-2">
                             <span class="text-muted">Assigned Cases</span><br>
                             <i class="bi bi-file-earmark-text text-primary"></i>
                         </div>
-                            <h2 class="fw-bolder">12</h2>
-                            <small class="txt-c">Currently assigned</small>
+                        <h2 class="fw-bolder">8</h2>
+                        <small class="txt-c">Currently assigned</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                 <div class="case-card case-blue p-3">
-                      <a href="/assigned_cases" class="stretched-link"></a>
+               <div class="case-card case-blue p-3">
+                  <a href="mediation_cases.php" class="stretched-link"></a>
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-10">
                         <span class="card-title text-muted ">Pending Acceptance</span><br>
                         <i class="bi bi-clock-history" style="color:#FFD700; font-size:20px;"></i>
                         </div>
-                        <h2 class="fw-bolder">3</h2>
+                        <h2 class="fw-bolder">2</h2>
                         <small class="txt-c">Awaiting response</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-                 <div class="case-card case-green p-3">
-                      <a href="/assigned_cases" class="stretched-link"></a>
+               <div class="case-card case-green p-3">
+                  <a href="mediation_cases.php" class="stretched-link"></a>
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-10">
-                        <span class="card-title text-muted">Active Hearings</span><br>
+                        <span class="card-title text-muted">Active Sessions</span><br>
                       <i class="fa-solid fa-calendar" style="color:#5bc0de; font-size:20px;"></i>
 
                         </div>
-                        <h2 class="fw-bolder">6</h2>
+                        <h2 class="fw-bolder">4</h2>
                         <small class="txt-c">In progress</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-3">
-               <div class="case-card case-yellow p-3">
-                  <a href="/assigned_cases" class="stretched-link"></a>
+                 <div class="case-card case-yellow p-3">
+                      <a href="mediation_cases.php" class="stretched-link"></a>
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between mb-10">
                         <span class="card-title text-muted">Completed</span><br>
                             <i class="bi bi-check-circle text-success"></i>
                         </div>
-                        <h2 class="fw-bolder">45</h2>
+                        <h2 class="fw-bolder">23</h2>
                         <small class="txt-c">Total completed</small>
                     </div>
                 </div>
@@ -75,8 +75,8 @@
 
             <div class="pending-box pending-yellow d-flex justify-content-between align-items-center">
                 <div>
-                    <strong>Appointment Acceptance Required</strong><br>
-                    <small>PROS-20250901-001 - SBI vs Amit Kumar</small>
+                    <strong>Mediation Appointment Acceptance Required</strong><br>
+                    <small>MED-20250901-001 - HDFC Bank vs Rajesh Enterprises</small>
                 </div>
                 <div>
                     <button class="btn btn-sm btn-outline-secondary">Decline</button>
@@ -86,12 +86,10 @@
 
             <div class="pending-box pending-blue d-flex justify-content-between align-items-center">
                 <div>
-                    <strong>Hearing Minutes Pending</strong><br>
-                    <small>PROS-20250901-002 - Upload MoM from Dec 30 hearing</small>
+                    <strong>Settlement Agreement Pending</strong><br>
+                    <small>MED-20250901-003 - Draft settlement terms for review</small>
                 </div>
-                <button class="btn btn-sm btn-primary">
-                    <i class="bi bi-upload"></i> Upload
-                </button>
+                <button class="btn btn-sm btn-primary"><i class="fa-regular fa-file-lines me-2"></i>Review Draft</button>
             </div>
 
         </div>
@@ -99,30 +97,30 @@
 
     <!-- Upcoming Hearings -->
     <div class="card">
-        <div class="card-header fw-bold">Upcoming Hearings</div>
+        <div class="card-header fw-bold">Upcoming Mediation Sessions</div>
         <div class="card-body">
 
             <div class="hearing-box d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fw-bold">SBI vs Amit Kumar</div>
-                    <small>Jan 15, 2025 at 2:00 PM • Sysco180 Office, BKC Mumbai</small><br>
-                    <span class="badge bg-secondary mt-1">First Hearing</span>
+                    <div class="fw-bold">HDFC Bank vs Rajesh Enterprises</div>
+                    <small>Jan 18, 2025 at 10:00 AM • Sysco180 Office, BKC Mumbai</small><br>
+                    <span class="badge bg-secondary mt-1">Intial Mediation</span>
                 </div>
                 <div>
                     <button class="btn btn-sm btn-outline-dark"><i class="bi bi-eye"></i></button>
-                    <button class="btn btn-sm btn-primary">Join</button>
+                    <button class="btn btn-sm btn-primary">Join Session</button>
                 </div>
             </div>
 
             <div class="hearing-box d-flex justify-content-between align-items-center">
                 <div>
-                    <div class="fw-bold">HDFC vs Priya Singh</div>
-                    <small>Jan 20, 2025 at 11:00 AM • Video Conference</small><br>
-                    <span class="badge bg-secondary mt-1">Follow-up</span>
+                    <div class="fw-bold">ICIC bank vs Sharma Industries</div>
+                    <small>Jan 22, 2025 at 2:00 AM • Video Conference</small><br>
+                    <span class="badge bg-secondary mt-1">Settlement Discussion</span>
                 </div>
                 <div>
                     <button class="btn btn-sm btn-outline-dark"><i class="bi bi-eye"></i></button>
-                    <button class="btn btn-sm btn-primary">Join</button>
+                    <button class="btn btn-sm btn-primary">Join Session</button>
                 </div>
             </div>
 
@@ -132,6 +130,7 @@
 </div>
 
 
-     {% include 'arbitrator/script.html' %}
+
+   {% include 'mediator/script.html' %}
 </body>
 </html>

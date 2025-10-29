@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+     {% include 'sysco_admin/head.html' %}
+</head>
+<body>
+
+   {% include 'sysco_admin/header.html' %}
+
+    <div class="container-fluid mt-3">
+
+        <div class="case-summary card p-3 mx-5 mb-4 my-6 mt-4 rounded">
+                <div class="d-flex justify-content-between align-items-start mb-2 flex-wrap">
+                    <div class="d-flex align-items-center">
+                    <h6 class="mb-0 me-2 fw-semibold">PROS-20250901-001</h6>
+                    <span class="badge status-badge">Pending Validation</span>
+                    </div>
+                    <div class="text-end">
+                    <h4 class="text-danger mb-0">₹12,50,000</h4>
+                    <small class="text-muted">Outstanding Amount</small>
+                    </div>
+                </div>
+
+                <h6 class="text-secondary mb-2">SBI vs Amit Kumar</h6>
+                <hr class="case-divider">
+
+                <div class="row text-muted small case-info">
+                    <!-- Upload Date -->
+                    <div class="col-md-3 mb-2 d-flex align-items-start">
+                    <i class="fa-regular fa-calendar info-icon"></i>
+                    <div>
+                        <div>Upload Date</div>
+                        <strong class="text-dark d-block">2024-12-28</strong>
+                    </div>
+                    </div>
+
+                    <!-- Arbitrator -->
+                    <div class="col-md-3 mb-2 d-flex align-items-start">
+                    <i class="fa-regular fa-user info-icon"></i>
+                    <div>
+                        <div>Arbitrator</div>
+                        <strong class="text-dark d-block">Not Assigned</strong>
+                    </div>
+                    </div>
+
+                    <!-- Agreement No -->
+                    <div class="col-md-3 mb-2 d-flex align-items-start">
+                    <i class="fa-regular fa-file-lines info-icon"></i>
+                    <div>
+                        <div>Agreement No</div>
+                        <strong class="text-dark d-block">AGR-12345</strong>
+                    </div>
+                    </div>
+
+                    <!-- LRN -->
+                    <div class="col-md-3 mb-2 d-flex align-items-start">
+                    <i class="fa-solid fa-file-contract info-icon"></i>
+                    <div>
+                        <div>LRN</div>
+                        <strong class="text-dark d-block">LRN-9988</strong>
+                    </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="card p-3 mx-5 mb-4 my-6 mt-4 rounded">
+            <div class="row">
+                
+
+                <div class="col-lg-12">
+                    <div class="nav_sec mb-3" id="nav-tab" role="tablist">
+                        <button class="nav_link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#overview" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+                        <button class="nav_link" id="parties-tab" data-bs-toggle="tab" data-bs-target="#parties" type="button" role="tab" aria-controls="parties" aria-selected="false">Parties</button>
+                        <button class="nav_link" id="financial-tab" data-bs-toggle="tab" data-bs-target="#financial" type="button" role="tab" aria-controls="financial" aria-selected="false">Financial</button>
+                        <button class="nav_link" id="documents-tab" data-bs-toggle="tab" data-bs-target="#documents" type="button" role="tab" aria-controls="documents" aria-selected="false">Documents</button>
+                        <button class="nav_link" id="hearings-tab" data-bs-toggle="tab" data-bs-target="#hearings" type="button" role="tab" aria-controls="hearings" aria-selected="false">Hearings</button>
+                        <button class="nav_link" id="timeline-tab" data-bs-toggle="tab" data-bs-target="#timeline" type="button" role="tab" aria-controls="timeline" aria-selected="false">Timeline</button>
+                    </div>
+
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active overview_tab" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+  <div class="overview-container">
+
+    <!-- Case Summary -->
+    <div class="card case-summary">
+      <h5>Case Summary</h5>
+      <div class="case-item">
+        <label>Case Type</label>
+        <p>Loan Recovery</p>
+      </div>
+      <div class="case-item">
+        <label>Product</label>
+        <p>Home Loan</p>
+      </div>
+      <div class="case-item">
+        <label>Current Stage</label>
+        <p class="status pending">Pending Validation</p>
+      </div>
+      <div class="case-item">
+        <label>Days Since Filing</label>
+        <p>17 days</p>
+      </div>
+    </div>
+
+    <!-- Quick Stats -->
+    <div class="card quick-stats">
+      <h5>Quick Stats</h5>
+      <div class="stat-item">
+        <label>Total Documents</label>
+        <span class="circle">5</span>
+      </div>
+      <div class="stat-item">
+        <label>Hearings Scheduled</label>
+        <span class="circle">2</span>
+      </div>
+      <div class="stat-item">
+        <label>Communications</label>
+        <span class="circle">3</span>
+      </div>
+      <div class="stat-item">
+        <label>Next Hearing</label>
+        <span class="badge">15-Jan-2025</span>
+      </div>
+    </div>
+
+    <!-- Actions Required -->
+    <div class="card actions-required">
+      <h5>Actions Required</h5>
+
+      <div class="action-item pending-docs">
+        <div class="icon">⚠️</div>
+        <div>
+          <p class="title">Pending Documents</p>
+          <span>Respondent to submit reply</span>
+        </div>
+      </div>
+
+      <div class="action-item hearing-prep">
+        <div class="icon">📄</div>
+        <div>
+          <p class="title">Hearing Preparation</p>
+          <span>Review documents before 15-Jan</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Case Notes -->
+   
+  <div class="card case-notes">
+    <h5>Case Notes</h5>
+    <textarea placeholder="Add case notes..."></textarea>
+    <button class="save-note"><i class="fa fa-paper-plane"></i> Save Note</button>
+  </div>
+</div>
+
+                       
+
+
+                        <div class="tab-pane fade parties_tab" id="parties" role="tabpanel" aria-labelledby="parties-tab">
+
+                        </div>
+                        <div class="tab-pane fade financial_tab" id="financial" role="tabpanel" aria-labelledby="financial-tab">
+
+                        </div>
+                        <div class="tab-pane fade documents_tab" id="documents" role="tabpanel" aria-labelledby="documents-tab">
+
+                        </div>
+                        <div class="tab-pane fade hearings_tab" id="hearings" role="tabpanel" aria-labelledby="hearings-tab">
+
+                        </div>
+                        <div class="tab-pane fade timeline_tab" id="timeline" role="tabpanel" aria-labelledby="timeline-tab">
+
+                        </div>
+                        
+
+                         
+
+                        
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+      {% include 'sysco_admin/script.html' %}
+</body>
+
+</html>

@@ -5,6 +5,7 @@ from syscoapp.views import *
 
 
 urlpatterns = [
+
     path('',login),
     path("add_user",add_user),
     path('arbitrator',arbitrator),
@@ -31,15 +32,30 @@ urlpatterns = [
     path('my_cases_view',my_cases_view),
     path('upload_cases',upload_cases),
 
+# Mediator ------------------------------------------->
 
+    path('mediator_dashboard',mediator_dashboard),
+    path('mediator_head',mediator_head),
+    path('mediator_script',mediator_script),
+    path('mediator_header',mediator_header),
+    path('mediation_cases',mediation_cases),
+    path('mediation_cases_view',mediation_cases_view),
+    path('sessions',sessions),
 
+# Sysco Admin ------------------------------------------->
 
-
-
-
-
-
-
+    path('sysco_admin_dashboard',sysco_admin_dashboard),
+    path('arbitrators',arbitrators),
+    path('add_arbitrator',add_arbitrator),
+    path('arbitrator_view',arbitrator_view),
+    path('cash_queue',cash_queue),
+    path('cash_queue_view',cash_queue_view),
+    path('upload_cases',upload_cases),
+    path('sysco_admin_header',sysco_admin_header),
+    path('sysco_admin_head',sysco_admin_head),
+    path('sysco_admin_script',sysco_admin_script),
+    path('hearings',hearings),
+    path('template',template),
 
 
 
