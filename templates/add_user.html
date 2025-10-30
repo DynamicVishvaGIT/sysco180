@@ -60,14 +60,13 @@
             <!-- Registration Type -->
           <div class="mb-3 text-start">
                 <label class="form-label fw-bold">Select Registration Type</label>
-                    <select class="form-select" id="regType">
-                        <option value="" selected>Choose your registration type</option>
+                    <select class="form-select" id="registration_user_type" name="registration_user_type">
+                        <option value="" selected disabled>Choose your registration type</option>
                         <option value="Arbitrator">Arbitrator</option>
                         <option value="Mediator">Mediator</option>
                         <option value="Bank/Individual">Bank/Individual</option>
                     </select>
             </div>
-
 
             <!-- Terms & Conditions -->
             <label class="fw-bold d-block mb-1 text-start">Terms & Conditions</label>
@@ -88,25 +87,22 @@
 
             <!-- Checkbox -->
             <div class="form-check text-start mb-3">
-                <input class="form-check-input" type="checkbox" id="termsCheck">
+                <input class="form-check-input" type="checkbox" id="termsCheck" nam="terms_and_conditions">
                 <label class="form-check-label small" for="termsCheck">
                     I accept the <b>Terms & Conditions</b> and <b>Privacy Policy</b>
                 </label>
             </div>
 
-
-                <!-- Buttons -->
+            <!-- Buttons -->
             <div class="d-flex justify-content-between">
-              <a href="/add_user" class="btn btn-outline-secondary">← Back</a>
-              <a href="/review" class="btn btn-primary">Continue →</a>
+              <a href="/login" class="btn btn-outline-secondary">← Back</a>
+              <button type="button" class="btn btn-primary">Continue →</button>
 
             </div>
 
             </div>
 
-          
         </div>
-
 
      {% include 'script.html' %}
 

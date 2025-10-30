@@ -51,77 +51,60 @@
                   <p class="text-center text-muted">Tell us more about yourself</p>
 
                         <!-- Personal Info Form -->
-            <form>
+        <form id="personal_information_form">
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Name</label>
-                  <input type="text" class="form-control" placeholder="Enter your name">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
                 </div>
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Email ID</label>
-                  <input type="email" class="form-control" placeholder="Enter your email">
+                  <input type="email" class="form-control" id="email_id" name="email_id" placeholder="Enter your email">
                 </div>
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Contact No</label>
-                  <input type="tel" class="form-control" placeholder="Enter your contact no">
+                  <input type="tel" class="form-control" id="contact_no" name="contact_no" placeholder="Enter your contact no">
                 </div>
                 <div class="mb-3 text-start">
-                  <label class="form-label fw-bold">Indian National/forgien </label>
-                  <textarea class="form-control" rows="2" placeholder="Enter your "></textarea>
+                  <label class="form-label fw-bold">Indian National / Foreign </label>
+                  <textarea class="form-control" rows="2" id="nationality" name="nationality" placeholder="Enter Your Nationality "></textarea>
                 </div>
                  
-  <div class="mb-3 text-start">
-    <label class="form-label fw-bold">State</label>
-    <select class="form-select">
-      <option selected disabled>Select your state</option>
-      <option value="MH">Maharashtra</option>
-      <option value="GJ">Gujarat</option>
-      <option value="RJ">Rajasthan</option>
-      <option value="UP">Uttar Pradesh</option>
-    </select>
-  </div>
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">State</label>
+                 <select class="form-control select2 state_data" value="" id='state' name='state' required></select>
+                </div>
 
-  <div class="mb-3 text-start">
-    <label class="form-label fw-bold">City</label>
-    <select class="form-select">
-      <option selected disabled>Select your city</option>
-      <option value="mumbai">Mumbai</option>
-      <option value="pune">Pune</option>
-      <option value="nagpur">Nagpur</option>
-      <option value="nashik">Nashik</option>
-    </select>
-  </div>
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">City</label>
+                  <select type="text" class="form-control select2 form-select city_data" value="" id='city' name='city' required></select>
+                      <label class="city_info"><medium class="text-danger">Please Select State to display city</medium></label>
+                </div>
 
-  <div class="mb-3 text-start">
-    <label class="form-label fw-bold">Pincode</label>
-    <select class="form-select">
-      <option selected disabled>Select your pincode</option>
-      <option value="400001">400001</option>
-      <option value="400002">400002</option>
-      <option value="400003">400003</option>
-      <option value="400004">400004</option>
-    </select>
-  </div>
-
-
+                <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">Pin code</label>
+                  <input type="text" class="form-control" id="pin_code" name="pin_code" placeholder="Enter pincode ">
+                </div>
 
                  <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Address</label>
-                  <textarea class="form-control" rows="2" placeholder="Enter your Complete address(Residencial/Registered)"></textarea> 
+                  <textarea class="form-control" rows="2" id="address" name="address" placeholder="Enter your Complete address(Residencial/Registered)"></textarea> 
                 </div>
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold"> Permanent Address</label>
-                  <textarea class="form-control" rows="2" placeholder="Enter your Corporate address(Corporate office/Branch)"></textarea> 
+                  <textarea class="form-control" rows="2" id="permanent_address" name="permanent_address" placeholder="Enter your Corporate address(Corporate office/Branch)"></textarea> 
                 </div>
               
               <!-- Buttons -->
                 <div class="d-flex justify-content-between">
                    <a href="/add_user" class="btn btn-outline-secondary">← Back</a>
-                  <a href="/review" class="btn btn-primary">Submit →</a>
+                  <button type="button" class="btn btn-primary">Submit → </button>
                 </div>
-            </form>
+        </form>
 
         </div>
 
     </div>
+
+     {% include 'script.html' %}
 </body>
 </html>

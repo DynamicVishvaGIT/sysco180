@@ -25,11 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-&*t9tbj=@k5g0)^yf_vftlhv**fqu$wcd@)1l6m@#o8)jih3z9'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-CSRF_TRUSTED_ORIGINS = ['https://sysco180.dvadminpanel.in/','https://www.sysco180.dvadminpanel.in/']
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://sysco180.dvadminpanel.in',
+    'https://www.sysco180.dvadminpanel.in',
+]
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 
@@ -44,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'syscoapp',
+    'master',
 ]
 
 MIDDLEWARE = [
