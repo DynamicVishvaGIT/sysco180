@@ -17,7 +17,8 @@ class SoftDeleteTimestampMixin(models.Model):
         abstract = True
 
 class Arbitrator(SoftDeleteTimestampMixin,models.Model):
-    FULL_NAME                         = models.CharField(max_length=200)
+    USER_TYPE                         = models.CharField(max_length=50, blank=True, null=True)
+    FULL_NAME                         = models.CharField(max_length=200, blank=True, null=True)
     DATE_OF_BIRTH                     = models.DateField(blank=True, null=True)
     GENDER                            = models.CharField(max_length=255, blank=True, null=True)
     NATIONALITY                       = models.CharField(max_length=50, blank=True, null=True)
@@ -56,12 +57,14 @@ class Arbitrator(SoftDeleteTimestampMixin,models.Model):
     SANAD_ID_FILE                     = models.FileField(upload_to='arbitrators_sanad/', blank=True, null=True)
     MEMBERSHIP_CERTIFICATION_FILE     = models.FileField(upload_to='arbitrators_membership/', blank=True, null=True)
 
+    TERMS_AND_CONDITIONS              = models.BooleanField(default=False,blank=True,null=True)
+
     class Meta:
         verbose_name_plural = "Arbitrators"
 
 class Mediator(SoftDeleteTimestampMixin, models.Model):
-
-    FULL_NAME                              = models.CharField(max_length=200)
+    USER_TYPE                              = models.CharField(max_length=50, blank=True, null=True)
+    FULL_NAME                              = models.CharField(max_length=200, blank=True, null=True)
     DATE_OF_BIRTH                          = models.DateField(blank=True, null=True)
     GENDER                                 = models.CharField(max_length=255, blank=True, null=True)
     NATIONALITY                            = models.CharField(max_length=50, blank=True, null=True)
@@ -103,20 +106,23 @@ class Mediator(SoftDeleteTimestampMixin, models.Model):
     EDUCATION_CERTIFICATION_FILE           = models.FileField(upload_to='mediator_education/', blank=True, null=True)
     MEMBERSHIP_CERTIFICATION_FILE          = models.FileField(upload_to='mediator_membership/', blank=True, null=True)
 
+    TERMS_AND_CONDITIONS                   = models.BooleanField(default=False,blank=True,null=True)
     class Meta:
         verbose_name_plural = "Mediators"
 
 class Bank_individual_user(SoftDeleteTimestampMixin,models.Model):
-
-    FULL_NAME         = models.CharField(max_length=200)
-    EMAIL_ID          = models.EmailField(max_length=254)
-    CONTACT_NO        = models.CharField(max_length=15)
+    USER_TYPE         = models.CharField(max_length=50, blank=True, null=True)
+    FULL_NAME         = models.CharField(max_length=200, blank=True, null=True)
+    EMAIL_ID          = models.EmailField(max_length=254, blank=True, null=True)
+    CONTACT_NO        = models.CharField(max_length=15, blank=True, null=True)
     NATIONALITY       = models.CharField(max_length=50, blank=True, null=True)
     STATE             = models.CharField(max_length=100, blank=True, null=True)
     CITY              = models.CharField(max_length=100, blank=True, null=True)
     PIN_CODE          = models.CharField(max_length=10, blank=True, null=True)
     ADDRESS           = models.TextField(blank=True, null=True)
     PERMANENT_ADDRESS = models.TextField(blank=True, null=True)
+
+    TERMS_AND_CONDITIONS = models.BooleanField(default=False, blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Bank Individual Users"

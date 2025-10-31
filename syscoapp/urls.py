@@ -8,6 +8,7 @@ urlpatterns = [
 
     path('',login),
     path("add_user",add_user),
+    path('user_registration', user_registration),
     path('arbitrator',arbitrator),
     path('mediator',mediator),
     path('personal_information',personal_information),

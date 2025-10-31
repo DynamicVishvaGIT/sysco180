@@ -30,9 +30,11 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://sysco180.dvadminpanel.in',
-    'https://www.sysco180.dvadminpanel.in',
+    "https://sysco180.dvadminpanel.in",
+    "http://sysco180.dvadminpanel.in"
+
 ]
+
 
 CORS_ALLOW_ALL_ORIGINS = True
 

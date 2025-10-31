@@ -12,6 +12,7 @@
   <link href="/static/assets/css/style.css" rel="stylesheet">
 </head>
 <body>
+  
     <div class="login_page">
           <div class="login_a">
             <div>
@@ -52,6 +53,9 @@
 
                         <!-- Personal Info Form -->
         <form id="personal_information_form">
+           <input type="hidden" id="user_registration_type" name="user_registration_type" value="">
+          {% csrf_token %}
+          <input type="hidden" id="user_registration_type" name="user_registration_type" value="">
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Name</label>
                   <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
@@ -97,7 +101,7 @@
               <!-- Buttons -->
                 <div class="d-flex justify-content-between">
                    <a href="/add_user" class="btn btn-outline-secondary">← Back</a>
-                  <button type="button" class="btn btn-primary">Submit → </button>
+                  <button type="submit" class="btn btn-primary">Submit → </button>
                 </div>
         </form>
 
@@ -106,5 +110,7 @@
     </div>
 
      {% include 'script.html' %}
+      <script src="\static\assets\js\User\user_registration.js"></script>
+    
 </body>
 </html>
