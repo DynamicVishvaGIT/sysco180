@@ -52,13 +52,14 @@
                   <p class="text-center text-muted">Tell us more about yourself</p>
 
                         <!-- Personal Info Form -->
-        <form id="personal_information_form">
+        <form id="personal_information_form" novalidate>
            <input type="hidden" id="user_registration_type" name="user_registration_type" value="">
+           <input type="hidden" id="terms_and_conditions" name="terms_and_conditions">
           {% csrf_token %}
           <input type="hidden" id="user_registration_type" name="user_registration_type" value="">
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+                  <input type="text" class="form-control" id="name" name="full_name" placeholder="Enter your name">
                 </div>
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Email ID</label>
@@ -111,6 +112,35 @@
 
      {% include 'script.html' %}
       <script src="\static\assets\js\User\user_registration.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  
+    const savedType = localStorage.getItem("user_registration_type");
+   
+    const savedTerms = localStorage.getItem("terms_and_conditions");
+
+    if (savedType) {
+        const typeField = document.getElementById("user_registration_type");
+        if (typeField) {
+            typeField.value = savedType;
+            console.log("Loaded user_registration_type from localStorage:", savedType);
+        }
+    } else {
+        console.warn("No user_registration_type found in localStorage!");
+        toastr.warning("Registration type not found — please restart registration.");
+    }
+
+    if (savedTerms && savedTerms.toLowerCase() === "true") {
+        const termsCheck = document.getElementById("termsCheck");
+        if (termsCheck) {
+            termsCheck.checked = true;
+            console.log("Restored terms_and_conditions from localStorage: accepted");
+        }
+    }
+});
+</script>
+
     
 </body>
 </html>

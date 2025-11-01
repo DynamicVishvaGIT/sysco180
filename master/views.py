@@ -3,15 +3,17 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view 
 from django.http import JsonResponse, FileResponse, Http404
 from master.models import StateMaster, CityMaster
+from user.utils.auth_decorator import custom_authentication
 import logging
 logger = logging.getLogger()
 
 
 # Create your views here.
-
+@custom_authentication
 def state_master(request):
     return render(request,"state_master.html")
 
+@custom_authentication
 @api_view(["POST"])
 def add_state(request):
     try:
@@ -27,6 +29,7 @@ def add_state(request):
     except Exception as e:
         logger.exception(e)
         return JsonResponse({"message": f"Something went wrong: {str(e)}"}, status=500)
+    
 
 def load_state(request):
     try:
@@ -35,7 +38,8 @@ def load_state(request):
     except Exception as e:
         logger.exception(e)
         return JsonResponse({"message":"Something went Wrong"},safe=False,status=500)
-
+    
+@custom_authentication
 def get_state(request,id):
     try:
         data = list(StateMaster.objects.filter(id=id).values("id","NAME")   )
@@ -43,7 +47,8 @@ def get_state(request,id):
     except Exception as e:
         logger.exception(e)
         return JsonResponse({"message":"Something went Wrong"},safe=False,status=500)
-
+    
+@custom_authentication
 @api_view(['POST'])
 def edit_state(request,id):
     try:
@@ -60,9 +65,11 @@ def edit_state(request,id):
         logger.exception(e)
         return JsonResponse({"message":"Something went Wrong"},safe=False,status=500)
     
+@custom_authentication  
 def city_master(request):
     return render(request,"city_master.html")
 
+@custom_authentication
 @api_view(["POST"])
 def add_city(request):
     try:
@@ -92,6 +99,7 @@ def load_city(request):
         logger.exception(e)
         return JsonResponse({"message":"Something went Wrong"},safe=False,status=500)
     
+@custom_authentication  
 def get_city(request,id):
     try:
         data = list(CityMaster.objects.filter(id=id).values("id","STATE_id","NAME"))
@@ -109,6 +117,7 @@ def dropdown_city(request):
     # ''')
     return JsonResponse(city,safe=False,status=200)
 
+@custom_authentication
 @api_view(['POST'])
 def edit_city(request,id):
     try:

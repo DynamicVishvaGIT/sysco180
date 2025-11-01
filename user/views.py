@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
-from syscoapp.models import *
+from user.models import *
 from master.models import StateMaster, CityMaster
 
 # Create your views here.

@@ -21,16 +21,10 @@ $.ajaxSetup({
 });
 
 
-
-
 $("#Continue_with").click(function (e) {
     e.preventDefault();
 
-    console.log("Continue button clicked");
-
     const selectedType = $("#user_registration_type").val();
-    console.log("selectedType:", selectedType);
-
     const termsAccepted = $("#termsCheck").is(":checked");
 
     if (!selectedType) {
@@ -42,36 +36,31 @@ $("#Continue_with").click(function (e) {
         return;
     }
 
-    const formData = new FormData();
-    formData.append("csrfmiddlewaretoken", csrftoken);
-    formData.append("user_registration_type", selectedType.toLowerCase());
-    formData.append("terms_and_conditions", termsAccepted ? "true" : "false");
-
-
     $.ajax({
         type: "POST",
-        url: "/user_registration",
-        data: formData,
-        cache: false,
-        contentType: false,
-        processData: false,
+        url: "/user_type",
+        headers: {
+            "X-CSRFToken": csrftoken,
+        },
+        data: {
+            user_registration_type: selectedType.toLowerCase(),
+            terms_and_conditions: termsAccepted ? "true" : "false",
+        },
         success: function (response) {
-            console.log("Server response:", response);
-            toastr.success(response.message);
 
-            const userType = (response.user_type || response.user_registration_type || "").toLowerCase();
+            const userType = (response.user_type || "").toLowerCase();
+            const terms = response.terms_and_conditions || "false";
+
             if (!userType) {
                 toastr.error("User type missing in response.");
-                console.warn("Response did not include user_type key:", response);
                 return;
             }
 
             localStorage.setItem("user_registration_type", userType);
-            console.log("Saved user_registration_type:", userType);
+            localStorage.setItem("terms_and_conditions", terms);
 
-            console.log("localStorage now:", localStorage.getItem("user_registration_type"));
+            toastr.success("User type saved: " + userType);
 
-            console.log("Redirect intentionally disabled for testing. Full response:", response);
             setTimeout(() => {
                 if (userType === "arbitrator") {
                     window.location.href = "/arbitrator";
@@ -83,59 +72,39 @@ $("#Continue_with").click(function (e) {
                     toastr.error("Unknown user type. Please contact support.");
                 }
             }, 300);
-
         },
         error: function (xhr) {
             console.error("Error:", xhr.status, xhr.responseText);
-            toastr.error(xhr.responseJSON?.error || "Something went wrong during registration.");
+            toastr.error(xhr.responseJSON?.error || "Something went wrong while contacting the server.");
         },
     });
 });
 
+$(document).ready(function() {
+    const userType = localStorage.getItem("user_registration_type");
+    const terms = localStorage.getItem("terms_and_conditions");
 
-$(document).ready(function () {
-    const savedType = localStorage.getItem("user_registration_type");
-
-    if (savedType) {
-        $("#user_registration_type").val(savedType);
-        console.log("Loaded user_registration_type from localStorage:", savedType);
+    if (userType) {
+        $("#user_type_display").text(userType.toUpperCase());
     } else {
-        console.warn("No user_registration_type found in localStorage.");
-        toastr.warning("Please complete registration first.");
-       
+        console.warn(" No user_registration_type found in localStorage.");
+        toastr.warning("Registration type not found — please restart registration.");
     }
+
 });
+
+// Arbitrator Registration Form--------->
 
 $(document).ready(function () {
     $("#arbitrator_registration_form").on("submit", function (e) {
         e.preventDefault();
 
-        console.log("Arbitrator form submission triggered");
-
         const formData = new FormData(this);
+        const userType = localStorage.getItem("user_registration_type") || "";
+        const terms = localStorage.getItem("terms_and_conditions") || "false";
 
-        // ✅ CSRF check
-        if (typeof csrftoken === "undefined") {
-            const csrfEl = document.querySelector('[name=csrfmiddlewaretoken]');
-            if (csrfEl) formData.append("csrfmiddlewaretoken", csrfEl.value);
-        } else {
-            formData.append("csrfmiddlewaretoken", csrftoken);
-        }
-
-        // ✅ User type check
-        if (!formData.get("user_registration_type")) {
-            const savedType = localStorage.getItem("user_registration_type");
-            if (savedType) {
-                formData.set("user_registration_type", savedType);
-                console.log("Added saved user_registration_type:", savedType);
-            } else {
-                console.warn("No user_registration_type found.");
-                toastr.error("Registration type missing — please restart registration.");
-                return;
-            }
-        }
-
-        console.log("Submitting Arbitrator form with data:", Object.fromEntries(formData.entries()));
+        formData.append("user_registration_type", userType);
+        formData.append("terms_and_conditions", terms);
 
         $.ajax({
             type: "POST",
@@ -145,13 +114,92 @@ $(document).ready(function () {
             contentType: false,
             processData: false,
             success: function (response) {
-                toastr.success(response.message || "Form submitted successfully!");
-                console.log("Arbitrator Registration Success:", response);
+                    toastr.success(response.message);
+                    const id      = response.id;
+                    const user_type = response.type
+                   setTimeout(function () {
+                    window.location.href = `/view_registration_details/${id}?type=${user_type}`;
+                    }, 1000);
             },
             error: function (xhr) {
-                console.error("Arbitrator Registration Error:", xhr.status, xhr.responseText);
-                let errMsg = xhr.responseJSON?.error || xhr.statusText || "Submission failed";
+                console.error("Registration Error:", xhr.status, xhr.responseText);
+                toastr.error("Error submitting form");
+            },
+        });
+    });
+});
+
+// Mediator Registration Form  --------->
+
+$(document).ready(function () {
+    $("#mediator_registration_Form").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);   
+         const userType = localStorage.getItem("user_registration_type") || "";
+        const terms = localStorage.getItem("terms_and_conditions") || "false";
+
+        formData.append("user_registration_type", userType);
+        formData.append("terms_and_conditions", terms);  
+
+        $.ajax({
+            type: "POST",
+            url: "/user_registration",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+                    toastr.success(response.message);
+                    const id      = response.id;
+                    const user_type = response.type
+                   setTimeout(function () {
+                    window.location.href = `/view_registration_details/${id}?type=${user_type}`;
+                    }, 1000);
+
+            },
+            error: function (xhr) {
+                console.error("Mediator Registration Error:", xhr.status, xhr.responseText);
+
                 toastr.error(errMsg);
+            },
+        });
+    });
+});
+
+
+// Bank / Individual / Personal information Form  --------->
+
+$(document).ready(function () {
+    $("#personal_information_form").on("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+
+        const userType = localStorage.getItem("user_registration_type") || "";
+        const terms = localStorage.getItem("terms_and_conditions") || "false";
+
+        formData.append("user_registration_type", userType);
+        formData.append("terms_and_conditions", terms);
+
+        $.ajax({
+            type: "POST",
+            url: "/user_registration",
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function (response) {
+               toastr.success(response.message);
+                    const id        = response.id;
+                    const user_type = response.type
+                   setTimeout(function () {
+                    window.location.href = `/view_registration_details/${id}?type=${user_type}`;
+                    }, 1000);
+            },
+            error: function (xhr) {
+                console.error("Bank Individual Registration Error:", xhr.status, xhr.responseText);
+                toastr.error(xhr.responseJSON?.error);
             },
         });
     });

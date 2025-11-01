@@ -32,203 +32,9 @@
         <p class="text-muted">Fill all mandatory fields to complete your profile</p>
       </div>
 
-      <!-- Form Start -->
-      {% comment %} <form id="mediator_Form">
-
-        <!-- SECTION A — Personal Details -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section A — Personal Details</label>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Full Name *</label>
-              <input type="text" class="form-control" id="full_name" name="full_name"  required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Date of Birth *</label>
-              <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Gender *</label>
-              <select class="form-select" id="gender" name="gender" required>
-                <option disabled selected>Select</option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-              </select>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Nationality *</label>
-              <input type="text" class="form-control" id="nationality" name="nationality" required>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Permanent Address *</label>
-            <textarea class="form-control" rows="2" id="permanent_address" name="permanent_address" required></textarea>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Mobile Number *</label>
-              <input type="tel" class="form-control" id="mobile_no" name="mobile_no" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Email ID *</label>
-              <input type="email" class="form-control" id="email_id" name="email_id" required>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION B — Professional Details -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section B — Professional Details</label>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Current Occupation / Designation *</label>
-              <input type="text" class="form-control" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Organization / Firm Name *</label>
-              <input type="text" class="form-control" required>
-            </div>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Office Address *</label>
-            <textarea class="form-control" rows="2" required></textarea>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Professional Contact No.</label>
-              <input type="tel" class="form-control">
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Official Email ID</label>
-              <input type="email" class="form-control">
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION C — Qualifications -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section C — Qualifications</label>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Qualification *</label>
-              <input type="text" class="form-control" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Institution / University *</label>
-              <input type="text" class="form-control" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Year of Passing *</label>
-              <input type="number" class="form-control" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Specialization (if any)</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION D — Memberships / Associations -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section D — Memberships / Associations</label>
-          <div class="mb-3">
-            <label class="form-label">Memberships *</label>
-            <input type="text" class="form-control" required>
-          </div>
-        </div>
-
-        <!-- SECTION E — Mediation Experience -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section E — Mediation & ADR Experience</label>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Number of Mediation Conducted *</label>
-              <input type="number" class="form-control" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Sectors of Experience *</label>
-              <input type="text" class="form-control" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Years of Experience *</label>
-              <input type="number" class="form-control" required>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label class="form-label">Mediation / Conciliation Experience</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION F — Trainings / Certifications -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section F — Trainings / Certifications</label>
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Enter trainings/certifications">
-          </div>
-        </div>
-
-        <!-- SECTION G — Areas of Specialization -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section G — Areas of Specialization *</label>
-          <div class="mb-3">
-            <input type="text" class="form-control" required>
-          </div>
-        </div>
-
-        <!-- SECTION H — Language Proficiency -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section H — Language Proficiency *</label>
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="English mandatory, others optional" required>
-          </div>
-        </div>
-
-        <!-- SECTION I — Declaration -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section I — Declaration & Disclosure *</label>
-          <div class="row">
-            <div class="col-md-4 mb-3">
-              <input type="text" class="form-control" placeholder="Full Name" required>
-            </div>
-            <div class="col-md-4 mb-3">
-              <input type="date" class="form-control" required>
-            </div>
-            <div class="col-md-4 mb-3">
-              <input type="text" class="form-control" placeholder="Place" required>
-            </div>
-          </div>
-        </div>
-
-        <!-- SECTION J — Documents to be Attached -->
-        <div class="section-box">
-          <label class="form-label fw-bold section-title">Section J — Documents to be Attached *</label>
-          <div class="mb-3"><label class="form-label">Upload Updated CV / Profile *</label><input type="file" class="form-control" required></div>
-          <div class="mb-3"><label class="form-label">Upload Photo ID Proof (Aadhar / Passport) *</label><input type="file" class="form-control" required></div>
-          <div class="mb-3"><label class="form-label">Upload PAN Card *</label><input type="file" class="form-control" required></div>
-          <div class="mb-3"><label class="form-label">Upload Passport Size Photograph *</label><input type="file" class="form-control" required></div>
-          <div class="mb-3"><label class="form-label">Upload Educational Certificates *</label><input type="file" class="form-control" required></div>
-          <div class="mb-3"><label class="form-label">Upload Membership Certificates *</label><input type="file" class="form-control" required></div>
-        </div>
-
-        <!-- Buttons -->
-        <!-- Buttons -->
-            <div class="d-flex justify-content-between mt-4">
-            <a href="/add_user" class="btn btn-outline-secondary">← Back</a>
-            <a href="/review" class="btn btn-primary">Submit →</a>
-            </div>
-
-
-      </form> {% endcomment %}
         <form id="mediator_registration_Form">
           <input type="hidden" id="user_registration_type" name="user_registration_type" value="">
+          <input type="hidden" id="terms_and_conditions" name="terms_and_conditions">
           {% csrf_token %}
     
             <!-- SECTION A — Personal Details -->
@@ -237,7 +43,7 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Full Name *</label>
-                  <input type="text" class="form-control" id="full_name" name="full_name" required>
+                  <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter Your Name" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Date of Birth *</label>
@@ -256,21 +62,21 @@
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Nationality *</label>
-                  <input type="text" class="form-control" id="nationality" name="nationality" required>
+                  <input type="text" class="form-control" id="nationality" name="nationality"  placeholder="Enter your nationality" required >
                 </div>
               </div>
               <div class="mb-3">
                 <label class="form-label">Permanent Address *</label>
-                <textarea class="form-control" rows="2" id="permanent_address" name="permanent_address" required></textarea>
+                <textarea class="form-control" rows="2" id="permanent_address" name="permanent_address" placeholder="Enter your permanent address" required></textarea>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Mobile Number *</label>
-                  <input type="tel" class="form-control" id="mobile_no" name="mobile_no" required>
+                  <input type="tel" class="form-control" id="mobile_no" name="mobile_no" placeholder="Enter a mobile number" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Email ID *</label>
-                  <input type="email" class="form-control" id="email_id" name="email_id" required>
+                  <input type="email" class="form-control" id="email_id" name="email_id" placeholder="Enter a email id" required>
                 </div>
               </div>
             </div>
@@ -281,25 +87,25 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Current Occupation / Designation *</label>
-                  <input type="text" class="form-control" id="occupation" name="occupation" required>
+                  <input type="text" class="form-control" id="current_occupation_designation" name="current_occupation_designation" placeholder="Enter your current designation" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Organization / Firm Name *</label>
-                  <input type="text" class="form-control" id="organization_name" name="organization_name" required>
+                  <input type="text" class="form-control" id="organization_name" name="organization_name" placeholder="Enter organization or firm name" required>
                 </div>
               </div>
               <div class="mb-3">
                 <label class="form-label">Office Address *</label>
-                <textarea class="form-control" rows="2" id="office_address" name="office_address" required></textarea>
+                <textarea class="form-control" rows="2" id="office_address" name="office_address" placeholder="Enter your office address" required></textarea>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Professional Contact No.</label>
-                  <input type="tel" class="form-control" id="professional_contact" name="professional_contact">
+                  <input type="tel" class="form-control" id="professional_contact_no" name="professional_contact_no" placeholder="Enter office contact number">
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Official Email ID</label>
-                  <input type="email" class="form-control" id="official_email" name="official_email">
+                  <input type="email" class="form-control" id="official_email_id" name="official_email_id" placeholder="Enter office email id">
                 </div>
               </div>
             </div>
@@ -310,21 +116,21 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Qualification *</label>
-                  <input type="text" class="form-control" id="qualification" name="qualification" required>
+                  <input type="text" class="form-control" id="qualification" name="qualification" placeholder="Enter your qualification" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Institution / University *</label>
-                  <input type="text" class="form-control" id="institution" name="institution" required>
+                  <input type="text" class="form-control" id="university_name" name="university_name" placeholder="Enter institution or university name" required>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Year of Passing *</label>
-                  <input type="number" class="form-control" id="year_of_passing" name="year_of_passing" required>
+                  <input type="number" class="form-control" id="year_of_passing" name="year_of_passing" placeholder="Enter year of passing" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Specialization (if any)</label>
-                  <input type="text" class="form-control" id="specialization" name="specialization">
+                  <input type="text" class="form-control" id="specialization" name="specialization" placeholder="Enter specialization (if any)"> 
                 </div>
               </div>
             </div>
@@ -334,7 +140,7 @@
               <label class="form-label fw-bold section-title">Section D — Memberships / Associations</label>
               <div class="mb-3">
                 <label class="form-label">Memberships *</label>
-                <input type="text" class="form-control" id="memberships" name="memberships" required>
+                <input type="text" class="form-control" id="memberships" name="memberships" placeholder="Enter professional memberships" required>
               </div>
             </div>
 
@@ -344,21 +150,21 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Number of Mediation Conducted *</label>
-                  <input type="number" class="form-control" id="mediation_conducted" name="mediation_conducted" required>
+                  <input type="number" class="form-control" id="number_of_arbitrations_conducted" name="number_of_arbitrations_conducted"  placeholder="Enter total number conducted" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Sectors of Experience *</label>
-                  <input type="text" class="form-control" id="sectors_experience" name="sectors_experience" required>
+                  <input type="text" class="form-control" id="sectors_of_experience" name="sectors_of_experience" placeholder="Enter sectors of experience" required>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Years of Experience *</label>
-                  <input type="number" class="form-control" id="years_experience" name="years_experience" required>
+                  <input type="number" class="form-control" id="year_of_experience" name="year_of_experience" placeholder="Enter total years of experience" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Mediation / Conciliation Experience</label>
-                  <input type="text" class="form-control" id="mediation_experience" name="mediation_experience">
+                  <input type="text" class="form-control" id="mediation_experience" name="mediation_experience" placeholder="Enter mediation or conciliation experience (if any)">
                 </div>
               </div>
             </div>
@@ -367,7 +173,7 @@
             <div class="section-box">
               <label class="form-label fw-bold section-title">Section F — Trainings / Certifications</label>
               <div class="mb-3">
-                <input type="text" class="form-control" id="trainings" name="trainings" placeholder="Enter trainings/certifications">
+                <input type="text" class="form-control" id="trainings_certifications" name="trainings_certifications" placeholder="Enter trainings/certifications">
               </div>
             </div>
 
@@ -375,7 +181,7 @@
             <div class="section-box">
               <label class="form-label fw-bold section-title">Section G — Areas of Specialization *</label>
               <div class="mb-3">
-                <input type="text" class="form-control" id="areas_specialization" name="areas_specialization" required>
+                <input type="text" class="form-control" id="area_of_specialization" name="area_of_specialization" placeholder="Enter your area(s) of specialization" required>
               </div>
             </div>
 
@@ -383,7 +189,7 @@
             <div class="section-box">
               <label class="form-label fw-bold section-title">Section H — Language Proficiency *</label>
               <div class="mb-3">
-                <input type="text" class="form-control" id="language_proficiency" name="language_proficiency" placeholder="English mandatory, others optional" required>
+                <input type="text" class="form-control" id="language_proficiency" name="language_proficiency" placeholder="English mandatory, others optional" placeholder="English mandatory, others optional" required>
               </div>
             </div>
 
@@ -392,7 +198,7 @@
               <label class="form-label fw-bold section-title">Section I — Declaration & Disclosure *</label>
               <div class="row">
                 <div class="col-md-4 mb-3">
-                  <input type="text" class="form-control" id="declaration_name" name="declaration_name" placeholder="Full Name" required>
+                  <input type="text" class="form-control" id="declaration_and_disclosure_name" name="declaration_and_disclosure_name" placeholder="Full Name" required>
                 </div>
                 <div class="col-md-4 mb-3">
                   <input type="date" class="form-control" id="declaration_date" name="declaration_date" required>
@@ -412,23 +218,23 @@
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Photo ID Proof (Aadhar / Passport) *</label>
-                <input type="file" class="form-control" id="photo_id" name="photo_id" required>
+                <input type="file" class="form-control" id="id_proof_file" name="id_proof_file" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload PAN Card *</label>
-                <input type="file" class="form-control" id="pan_card" name="pan_card" required>
+                <input type="file" class="form-control" id="pan_card_file" name="pan_card_file" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Passport Size Photograph *</label>
-                <input type="file" class="form-control" id="photo" name="photo" required>
+                <input type="file" class="form-control" id="passport_size_photo_file" name="passport_size_photo_file" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Educational Certificates *</label>
-                <input type="file" class="form-control" id="education_certificates" name="education_certificates" required>
+                <input type="file" class="form-control" id="education_certification_file" name="education_certification_file" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Membership Certificates *</label>
-                <input type="file" class="form-control" id="membership_certificates" name="membership_certificates" required>
+                <input type="file" class="form-control" id="membership_certification_file" name="membership_certification_file" required>
               </div>
             </div>
 
@@ -450,7 +256,34 @@
 
     {% include 'script.html' %}
      <script src="\static\assets\js\User\user_registration.js"></script>
-    
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  
+    const savedType = localStorage.getItem("user_registration_type");
+    const savedTerms = localStorage.getItem("terms_and_conditions");
+
+    if (savedType) {
+        const typeField = document.getElementById("user_registration_type");
+        if (typeField) {
+            typeField.value = savedType;
+            console.log("Loaded user_registration_type from localStorage:", savedType);
+        }
+    } else {
+        console.warn("No user_registration_type found in localStorage!");
+        toastr.warning("Registration type not found — please restart registration.");
+    }
+
+    if (savedTerms && savedTerms.toLowerCase() === "true") {
+        const termsCheck = document.getElementById("termsCheck");
+        if (termsCheck) {
+            termsCheck.checked = true;
+            console.log("Restored terms_and_conditions from localStorage: accepted");
+        }
+    }
+});
+</script>
+
 
 </body>
 </html>
