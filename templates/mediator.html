@@ -72,7 +72,7 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Mobile Number *</label>
-                  <input type="tel" class="form-control" id="mobile_no" name="mobile_no" placeholder="Enter a mobile number" required>
+                  <input type="tel" class="form-control" id="mobile_no" name="mobile_no" placeholder="Enter a mobile number"  pattern="[0-9]{10}" minlength="10" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Email ID *</label>
@@ -101,7 +101,7 @@
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Professional Contact No.</label>
-                  <input type="tel" class="form-control" id="professional_contact_no" name="professional_contact_no" placeholder="Enter office contact number">
+                  <input type="tel" class="form-control" id="professional_contact_no" name="professional_contact_no" placeholder="Enter office contact number"  pattern="[0-9]{10}" minlength="10" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label class="form-label">Official Email ID</label>
@@ -214,27 +214,27 @@
               <label class="form-label fw-bold section-title">Section J — Documents to be Attached *</label>
               <div class="mb-3">
                 <label class="form-label">Upload Updated CV / Profile *</label>
-                <input type="file" class="form-control" id="updated_cv" name="updated_cv" required>
+                <input type="file" class="form-control" id="updated_cv" name="updated_cv" accept=".pdf,.doc,.docx" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Photo ID Proof (Aadhar / Passport) *</label>
-                <input type="file" class="form-control" id="id_proof_file" name="id_proof_file" required>
+                <input type="file" class="form-control" id="id_proof_file" name="id_proof_file" accept=".pdf,.jpg,.jpeg,.png" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload PAN Card *</label>
-                <input type="file" class="form-control" id="pan_card_file" name="pan_card_file" required>
+                <input type="file" class="form-control" id="pan_card_file" name="pan_card_file" accept=".pdf,.jpg,.jpeg,.png" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Passport Size Photograph *</label>
-                <input type="file" class="form-control" id="passport_size_photo_file" name="passport_size_photo_file" required>
+                <input type="file" class="form-control" id="passport_size_photo_file" name="passport_size_photo_file" accept=".jpg,.jpeg,.png" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Educational Certificates *</label>
-                <input type="file" class="form-control" id="education_certification_file" name="education_certification_file" required>
+                <input type="file" class="form-control" id="education_certification_file" name="education_certification_file" accept=".pdf,.jpg,.jpeg,.png" required>
               </div>
               <div class="mb-3">
                 <label class="form-label">Upload Membership Certificates *</label>
-                <input type="file" class="form-control" id="membership_certification_file" name="membership_certification_file" required>
+                <input type="file" class="form-control" id="membership_certification_file" name="membership_certification_file" accept=".pdf,.jpg,.jpeg,.png" required>
               </div>
             </div>
 

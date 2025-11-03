@@ -16,6 +16,17 @@ class SoftDeleteTimestampMixin(models.Model):
     class Meta:
         abstract = True
 
+# this only admin table 
+class Admin(SoftDeleteTimestampMixin,models.Model):
+
+    NAME                = models.CharField(max_length=255, blank=True, null=True)
+    PHONE_NUMBER        = models.CharField(max_length=255, blank=True, null=True)
+    EMAIL_ID            = models.CharField(max_length=255, blank=True, null=True)
+    IS_LOGGED_IN        = models.BooleanField(default=False)    
+
+    class Meta:
+        verbose_name_plural = "Admin"
+
 class Arbitrator(SoftDeleteTimestampMixin,models.Model):
     USER_TYPE                         = models.CharField(max_length=50, blank=True, null=True)
     FULL_NAME                         = models.CharField(max_length=200, blank=True, null=True)

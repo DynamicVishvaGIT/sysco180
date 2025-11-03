@@ -77,11 +77,11 @@
               <div class="row">
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Mobile Number *</label>
-                    <input type="tel" class="form-control" placeholder="Enter a mobile number" required pattern="[0-9]{10}" minlength="10" maxlength="10">
+                    <input type="tel" class="form-control" placeholder="Enter a mobile number" required pattern="[0-9]{10}" minlength="10" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                     </div>
                     <div class="col-md-6 mb-3">
                         <label class="form-label">Email ID *</label>
-                        <input type="email" class="form-control" placeholder="Enter an email address" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                        <input type="email" class="form-control" placeholder="Enter an email address" required>
                     </div>
               </div>
               <div class="row">
@@ -91,7 +91,7 @@
                   </div>
                   <div class="col-md-6 mb-3">
                       <label class="form-label">Passport No. (Optional)</label>
-                      <input type="text" class="form-control" id="passport_no" name="passport_no"  placeholder="Enter passport number">
+                      <input type="text"  class="form-control"  id="passport_no"  name="passport_no"  placeholder="Enter passport number"pattern="^[A-PR-WYa-pr-wy][1-9][0-9]{6}$" minlength="8" maxlength="8" required>
                   </div>
               </div>
           </div>
@@ -116,7 +116,7 @@
               <div class="row">
                   <div class="col-md-6 mb-3">
                       <label class="form-label">Professional Contact No.</label>
-                      <input type="tel" class="form-control" id="professional_contact_no" name="professional_contact_no" placeholder="Enter office contact number" required pattern="[0-9]{10}" minlength="10" maxlength="10">
+                      <input type="tel" class="form-control" id="professional_contact_no" name="professional_contact_no" placeholder="Enter office contact number" pattern="[0-9]{10}" minlength="10" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                   </div>
                   <div class="col-md-6 mb-3">
                       <label class="form-label">Official Email ID</label>
@@ -241,43 +241,43 @@
 
               <div class="mb-3">
                   <label class="form-label">Upload Updated CV / Profile *</label>
-                  <input type="file" class="form-control" id="updated_cv" name="updated_cv" accept=".pdf,.doc,.docx">
+                  <input type="file" class="form-control" id="updated_cv" name="updated_cv" accept=".pdf,.doc,.docx" required>
                   <small class="text-muted">Allowed formats: PDF, DOC, DOCX</small>
               </div>
 
               <div class="mb-3">
                   <label class="form-label">Upload Photo ID Proof (Aadhar / Passport) *</label>
-                  <input type="file" class="form-control" id="id_proof_file" name="id_proof_file" accept=".pdf,.jpg,.jpeg,.png">
+                  <input type="file" class="form-control" id="id_proof_file" name="id_proof_file" accept=".pdf,.jpg,.jpeg,.png" required>
                   <small class="text-muted">Allowed formats: PDF, JPG, JPEG, PNG</small>
               </div>
 
               <div class="mb-3">
                   <label class="form-label">Upload PAN Card *</label>
-                  <input type="file" class="form-control" id="pan_card_file" name="pan_card_file" accept=".pdf,.jpg,.jpeg,.png">
+                  <input type="file" class="form-control" id="pan_card_file" name="pan_card_file" accept=".pdf,.jpg,.jpeg,.png" required>
                   <small class="text-muted">Allowed formats: PDF, JPG, JPEG, PNG</small>
               </div>
 
               <div class="mb-3">
                   <label class="form-label">Upload Passport Size Photograph *</label>
-                  <input type="file" class="form-control" id="passport_size_photo_file" name="passport_size_photo_file" accept=".jpg,.jpeg,.png">
+                  <input type="file" class="form-control" id="passport_size_photo_file" name="passport_size_photo_file" accept=".jpg,.jpeg,.png" required>
                   <small class="text-muted">Allowed formats: JPG, JPEG, PNG</small>
               </div>
 
               <div class="mb-3">
                   <label class="form-label">Upload Educational Certificates *</label>
-                  <input type="file" class="form-control" id="education_certification_file" name="education_certification_file" accept=".pdf,.jpg,.jpeg,.png">
+                  <input type="file" class="form-control" id="education_certification_file" name="education_certification_file" accept=".pdf,.jpg,.jpeg,.png" required>
                   <small class="text-muted">Allowed formats: PDF, JPG, JPEG, PNG</small>
               </div>
 
               <div class="mb-3">
                   <label class="form-label">Upload Bar Council Certificate & Sanad ID (if applicable)</label>
-                  <input type="file" class="form-control" id="sand_id_file" name="sand_id_file" accept=".pdf,.jpg,.jpeg,.png">
+                  <input type="file" class="form-control" id="sand_id_file" name="sand_id_file" accept=".pdf,.jpg,.jpeg,.png" required>
                   <small class="text-muted">Allowed formats: PDF, JPG, JPEG, PNG</small>
               </div>
 
               <div class="mb-3">
                   <label class="form-label">Upload Professional Membership Certificates *</label>
-                  <input type="file" class="form-control" id="membership_certification_file" name="membership_certification_file" accept=".pdf,.jpg,.jpeg,.png">
+                  <input type="file" class="form-control" id="membership_certification_file" name="membership_certification_file" accept=".pdf,.jpg,.jpeg,.png" required>
                   <small class="text-muted">Allowed formats: PDF, JPG, JPEG, PNG</small>
               </div>
           </div>

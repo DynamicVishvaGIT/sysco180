@@ -3,15 +3,20 @@ from email import header
 import logging
 from venv import logger
 logger = logging.getLogger(__name__)
+from django import apps
 from django.forms import ValidationError
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, render
 from rest_framework.decorators import api_view
 from django.views.decorators.csrf import csrf_exempt
+from user.utils.auth_decorator import custom_authentication
+from user.utils.otp_manager import OTPManager
 from user.models import *
 from master.models import StateMaster, CityMaster
 
 # Create your views here.
+
+
 
 def login(request):
     return render(request,'login.html')
@@ -31,7 +36,7 @@ def personal_information(request):
 def view_details_page(request):
     return render(request,'view_details.html')
 
-# Arbitrator ----------
+# Arbitrator ---------------------------------------------------------------->
 
 def arbitrator_dashboard(request):
     return render(request,'arbitrator/arbitrator_dashboard.html')
@@ -54,7 +59,7 @@ def hearings(request):
 def arbitrator_script(request):
     return render(request,'arbitrator/script.html')
 
-# Bank User -------------------------------------------> 
+# Bank User --------------------------------------------------------------------------> 
 
 def bank_user_dashboard(request):
     return render(request,'bank_user/bank_user_dashboard.html')
@@ -78,7 +83,7 @@ def bank_user_header(request):
     return render(request,'bank_user/header.html')
 
 
-# Mediator ------------------------------------------->
+# Mediator -------------------------------------------------------------------------->
 
 def mediator_dashboard(request):
     return render(request,'mediator/mediator_dashboard.html')       
@@ -102,7 +107,7 @@ def sessions(request):
     return render(request,'mediator/sessions.html')
 
 
-#Sysco Admin ------------------------------------------->
+#Sysco Admin ------------------------------------------------------------------------------>
 
 def sysco_admin_dashboard(request):
     return render(request,'sysco_admin/sysco_admin_dashboard.html')
@@ -304,3 +309,214 @@ def view_registration_details(request, id):
        bank_individual = Bank_individual_user.objects.filter(id=id, IS_DELETED=False).all()
 
     return render(request, "view_details.html", {"arbitrator": arbitrator,"mediator": mediator,"bank_individual":bank_individual,"user_type": user_type})
+
+# model_map = {
+#     'admin': ('user', 'Admin'),
+#     'arbitrator': ('user', 'Arbitrator'),  # same model reused
+#     'mediator': ('user', 'Mediator'),
+#     'bank_individual': ('user', 'Bank_individual_user'),
+# }
+
+# @api_view(["POST"])    
+# def send_otp(request):
+#     try:
+#         mobile_no_email     = request.data.get("mobile_no_email")
+#         user_type           = request.data.get("user_type")
+#         otp_for             = request.data.get("otp_for")
+
+#         logger.info(f''' 
+#             mobile_no_email  = {mobile_no_email}
+#             user_type        = {user_type}
+#             otp_for          = {otp_for}
+#     ''')
+
+#         filter_kwargs = {}
+#         if user_type in ["admin","arbitrator","mediator","bank_individual"]:
+#             check = "Email"
+#             filter_kwargs["EMAIL_ID"] = mobile_no_email
+#         else:
+#             check = "Mobile No"
+#             filter_kwargs["PHONE_NUMBER"] = mobile_no_email
+
+            
+#         if not mobile_no_email:
+#             return JsonResponse({"message": f"{check} is required"}, status=400)
+        
+#         if not user_type:
+#             return JsonResponse({"message": "User Type is required"}, status=400)
+        
+#         if user_type not in model_map:
+#             return JsonResponse({"message": "Invalid Details. Contact Administrator."}, status=412)
+
+#         # if user_type not in ["admin","sales_person"]:
+#         #     if len(mobile_no_email) != 10:
+#         #         return JsonResponse({"message": "Mobile number must be exactly 10 digits"}, status=400)
+
+#         app_label, model_name = model_map[user_type]
+#         Model = apps.get_model(app_label, model_name)
+
+#         # Query the dynamic model
+#         # user   = Model.objects.filter(**filter_kwargs, IS_DELETED=False).first()
+#         # owner_name = ""
+#         # if otp_for in ["registration"]:
+#         #     if user:
+#         #         return JsonResponse({"message":f"{user_type.capitalize()} with same mobile number already exist"},safe=False,status=412)
+        
+#         # if otp_for in ["forgot_password"]:
+#         #     if not user:
+#         #         return JsonResponse({"message": "User does not exist"}, status=404)
+#         #     owner_name = user.OWNER_NAME
+
+#         msg = OTPManager.send_otp(mobile_no_email,user_type)
+        
+#         return JsonResponse({"message": msg}, status=200)
+#     except Exception as e:
+#         logger.exception(e)
+#         return JsonResponse({"message": "Something went Wrong"}, safe=False, status=500)
+    
+# @api_view(["POST"])
+# def verify_otp(request):
+#     try:
+#         # Extract request data
+#         mobile_no_email = request.data.get("mobile_no_email")
+#         user_type       = request.data.get("user_type")
+#         otp             = request.data.get("otp")
+
+#         logger.info(f''' 
+#             mobile_no_email  = {mobile_no_email}
+#             user_type        = {user_type}
+#             otp_for          = {otp}
+#     ''')
+        
+#         # Validate required parameters
+#         if not all([mobile_no_email, user_type, otp]):
+#             return JsonResponse({"message": "Missing required parameters"}, status=400)
+        
+#         filter_kwargs = {}
+#         if user_type in ["admin","arbitrator","mediator","bank_individual"]:
+#             check = "Email"
+#             filter_kwargs["EMAIL_ID"] = mobile_no_email
+#         else:
+#             check = "Mobile No"
+#             filter_kwargs["PHONE_NUMBER"] = mobile_no_email
+
+#         # logger.info(f"OTP Verification Attempt - User: {username}, Type: {user_type}, OTP: {otp},")
+#         logger.info(f"OTP Verification Attempt - mobile_no_email:{mobile_no_email},user_type:{user_type},otp={otp},")
+
+#         # Get the user model based on user type
+        
+#         if user_type not in model_map:
+#             return JsonResponse({"message": "Invalid Details. Contact Administrator."}, status=412)
+
+#         app_label, model_name = model_map[user_type]
+#         Model = apps.get_model(app_label, model_name)
+
+#         # Query the dynamic model
+#         user   = Model.objects.filter(**filter, IS_DELETED=False).first()
+        
+#         if not user:
+#             return JsonResponse({"message": "User does not exist"}, status=404)
+
+#         result = OTPManager.validate_otp(mobile_no_email,otp,user_type)
+
+#         if not result["status"]:
+#             return JsonResponse({"message": result["message"]}, status=400)
+
+#         return JsonResponse({"message": result["message"]}, status=200)
+
+#     except Exception as e:
+#         logger.exception(f"Error in OTP verification: {e}")
+#         return JsonResponse({"message": "Something went wrong"}, safe=False, status=500)
+
+
+model_map = {
+    'admin': ('user', 'Admin'),
+    'arbitrator': ('user', 'Arbitrator'),
+    'mediator': ('user', 'Mediator'),
+    'bank_individual': ('user', 'Bank_individual_user'),
+}
+
+@api_view(["POST"])    
+def send_otp(request):
+    try:
+        mobile_no_email = request.data.get("mobile_no_email")
+        user_type = request.data.get("user_type")
+        otp_for = request.data.get("otp_for")
+
+        logger.info(f'''
+            mobile_no_email = {mobile_no_email}
+            user_type = {user_type}
+            otp_for = {otp_for}
+        ''')
+
+        if not mobile_no_email:
+            return JsonResponse({"message": "Email/Mobile is required"}, status=400)
+        if not user_type:
+            return JsonResponse({"message": "User Type is required"}, status=400)
+        if user_type not in model_map:
+            return JsonResponse({"message": "Invalid user type"}, status=400)
+
+        msg, otp = OTPManager.send_otp(mobile_no_email, user_type)
+
+        # 🚀 Include OTP in the response for frontend testing
+        return JsonResponse({
+            "message": msg,
+            "otp": otp
+        }, status=200)
+
+    except Exception as e:
+        logger.exception(e)
+        return JsonResponse({"message": "Something went wrong"}, safe=False, status=500)
+
+
+
+# ==========================
+# VERIFY OTP API
+# ==========================
+@api_view(["POST"])
+def verify_otp(request):
+    try:
+        mobile_no_email = request.data.get("mobile_no_email")
+        user_type       = request.data.get("user_type")
+        otp             = request.data.get("otp")
+
+        logger.info(f''' 
+            mobile_no_email  = {mobile_no_email}
+            user_type        = {user_type}
+            otp              = {otp}
+        ''')
+
+        # Validation
+        if not all([mobile_no_email, user_type, otp]):
+            return JsonResponse({"message": "Missing required parameters"}, status=400)
+
+        if user_type not in model_map:
+            return JsonResponse({"message": "Invalid user type. Contact Administrator."}, status=412)
+
+        # Determine model
+        app_label, model_name = model_map[user_type]
+        Model = apps.get_model(app_label, model_name)
+
+        # Filter key logic
+        filter_kwargs = {}
+        if user_type in ["admin", "arbitrator", "mediator", "bank_individual"]:
+            filter_kwargs["EMAIL_ID"] = mobile_no_email
+        else:
+            filter_kwargs["PHONE_NUMBER"] = mobile_no_email
+
+        # Check if user exists
+        user = Model.objects.filter(**filter_kwargs, IS_DELETED=False).first()
+        if not user:
+            return JsonResponse({"message": "User does not exist"}, status=404)
+
+        # Validate OTP
+        result = OTPManager.validate_otp(mobile_no_email, otp, user_type)
+
+        if not result["status"]:
+            return JsonResponse({"message": result["message"]}, status=400)
+
+        return JsonResponse({"message": result["message"]}, status=200)
+
+    except Exception as e:
+        logger.exception(f"Error in verify_otp: {e}")
+        return JsonResponse({"message": "Something went wrong"}, status=500)

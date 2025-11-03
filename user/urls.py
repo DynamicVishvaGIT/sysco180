@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
-from syscoapp.views import *
+from user.views import *
 
 
 urlpatterns = [
@@ -14,7 +14,10 @@ urlpatterns = [
     path('mediator',mediator),
     path('personal_information',personal_information),
     path('view_details_page',view_details_page),
-     path('view_registration_details/<int:id>', view_registration_details),
+    path('view_registration_details/<int:id>', view_registration_details),
+
+    path('send_otp',send_otp),
+    path('verify_otp',verify_otp),
 
 # Arbitrator -------------------------------------------->
 
