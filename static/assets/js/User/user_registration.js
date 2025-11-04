@@ -207,14 +207,10 @@ $(document).ready(function () {
 
 // User Login & OTP Verification -------------------------------------------->
 
-
 $(document).ready(function () {
 
     let selectedRole = null;
 
-    // --------------------------
-    // ROLE SELECTION HANDLER
-    // --------------------------
     $(".role-item").on("click", function () {
         $(".role-item").removeClass("active-role");
         $(this).addClass("active-role");
@@ -222,33 +218,27 @@ $(document).ready(function () {
 
         console.log("Selected Role:", selectedRole);
 
-        // Show email/phone section after role is selected
         $("#emailSection_1").slideDown();
-
-        // Reset OTP section
         $("#otpSection").hide();
     });
 
-    // --------------------------
-    // SEND OTP BUTTON
-    // --------------------------
-    $("#sendOtpBtn").on("click", function (e) {
-        e.preventDefault();
-
+    function sendOtp(isNew = true) {
         let mobile_no_email = $("#mobile_no_email").val()?.trim();
 
         if (!selectedRole) {
-            toastr.warning("Please select your role first.");
+            toastr.error("Please select your role first.");
             return;
         }
 
         if (!mobile_no_email) {
-            toastr.warning("Please enter your Email / Mobile number.");
+            toastr.error("Please enter your Email");
             return;
         }
 
-        // Disable button while sending
-        $("#sendOtpBtn").prop("disabled", true).text("Sending...");
+        const $btn = isNew ? $("#sendOtpBtn") : $("#resendOtpBtn");
+        const btnText = isNew ? "Send OTP" : "Resend OTP";
+
+        $btn.prop("disabled", true).text(isNew ? "Sending..." : "Resending...");
 
         $.ajax({
             url: "/send_otp",
@@ -259,13 +249,11 @@ $(document).ready(function () {
                 otp_for: "login"
             },
             success: function (response) {
-                toastr.success(response.message );
+                toastr.success(response.message);
 
-                // Show OTP section
                 $("#emailSection_1").hide();
                 $("#otpSection").slideDown();
 
-                // Save for later use
                 localStorage.setItem("user_type", selectedRole);
                 localStorage.setItem("mobile_no_email", mobile_no_email);
             },
@@ -275,80 +263,82 @@ $(document).ready(function () {
                     msg = xhr.responseJSON.message;
                 }
                 toastr.error(msg);
+
+                $("#otpSection").hide();
+                $("#emailSection_1").show();
             },
             complete: function () {
-                $("#sendOtpBtn").prop("disabled", false).html('Send OTP <i class="bi bi-arrow-right ms-2"></i>');
+                $btn.prop("disabled", false).html(`${btnText} <i class="bi bi-arrow-right ms-2"></i>`);
+            }
+        });
+    }
+
+    $("#sendOtpBtn").on("click", function (e) {
+        e.preventDefault();
+        sendOtp(true);
+    });
+
+    $("#resendOtpBtn").on("click", function (e) {
+        e.preventDefault();
+        sendOtp(false);
+    });
+
+    $("#verifyBtn").on("click", function (e) {
+        e.preventDefault();
+
+        let otp = $("#otpInput").val()?.trim();
+        let mobile_no_email = localStorage.getItem("mobile_no_email");
+        let user_type = localStorage.getItem("user_type");
+
+        if (!/^\d{4}$/.test(otp)) {
+            toastr.error("Please enter a valid 4-digit OTP.");
+            return;
+        }
+
+        $("#verifyBtn").prop("disabled", true).text("Verifying...");
+
+        $.ajax({
+            url: "/verify_otp",
+            type: "POST",
+            data: {
+                mobile_no_email: mobile_no_email,
+                user_type: user_type,
+                otp: otp
+            },
+            success: function (response) {
+                toastr.success(response.message);
+
+                setTimeout(function () {
+                    if (user_type === "bank_individual") {
+                        window.location.href = "/bank_user_dashboard";
+                    } else if (user_type === "admin") {
+                        window.location.href = "/admin_dashboard";
+                    } else if (user_type === "arbitrator") {
+                        window.location.href = "/arbitrator_dashboard";
+                    } else if (user_type === "mediator") {
+                        window.location.href = "/mediator_dashboard";
+                    } else {
+                        window.location.href = "/";
+                    }
+                }, 1000);
+            },
+            error: function (xhr) {
+                let msg = "Invalid OTP or Server Error.";
+                if (xhr.responseJSON && xhr.responseJSON.message) {
+                    msg = xhr.responseJSON.message;
+                }
+                toastr.error(msg);
+            },
+            complete: function () {
+                $("#verifyBtn").prop("disabled", false).text("Verify & Sign In");
             }
         });
     });
 
-    // --------------------------
-    // VERIFY OTP BUTTON
-    // --------------------------
-   // --------------------------
-// VERIFY OTP BUTTON
-// --------------------------
-$("#verifyBtn").on("click", function (e) {
-    e.preventDefault();
-
-    let otp = $("#otpInput").val()?.trim();
-    let mobile_no_email = localStorage.getItem("mobile_no_email");
-    let user_type = localStorage.getItem("user_type");
-
-    // Strict validation for 6 digits
-    if (!/^\d{4}$/.test(otp)) {
-        toastr.error("Please enter a valid 4-digit OTP.");
-        return;
-    }
-
-    $("#verifyBtn").prop("disabled", true).text("Verifying...");
-
-    $.ajax({
-        url: "/verify_otp",
-        type: "POST",
-        data: {
-            mobile_no_email: mobile_no_email,
-            user_type: user_type,
-            otp: otp
-        },
-        success: function (response) {
-            // show server message or otp for testing
-            toastr.success(response.message || "OTP verified successfully!");
-
-            // Redirect after verification based on role (only on success)
-            if (user_type === "bank_individual") {
-                window.location.href = "/bank_user_dashboard";
-            } else if (user_type === "admin") {
-                window.location.href = "/admin_dashboard";
-            } else if (user_type === "arbitrator") {
-                window.location.href = "/arbitrator_dashboard";
-            } else if (user_type === "mediator") {
-                window.location.href = "/mediator_dashboard";
-            } else {
-                window.location.href = "/";
-            }
-        },
-        error: function (xhr) {
-            let msg = "Invalid OTP or Server Error.";
-            if (xhr.responseJSON && xhr.responseJSON.message) {
-                msg = xhr.responseJSON.message;
-            }
-            toastr.error(msg);
-        },
-        complete: function () {
-            $("#verifyBtn").prop("disabled", false).text("Verify & Sign In");
-        }
-    });
-});
-
-    // --------------------------
-    // BACK BUTTON
-    // --------------------------
     $("#backBtn").on("click", function () {
         $("#otpSection").hide();
         $("#emailSection_1").slideDown();
     });
-
 });
 
 

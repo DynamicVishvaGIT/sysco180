@@ -141,36 +141,40 @@
               </div>
             </div>
 
-            <!-- OTP Section (Hidden initially) -->
-            <!-- OTP Section (Hidden initially) -->
-<div
-  id="otpSection"
-  class="mb-3 otpSection_flex"
-  style="display: none">
-  <div class="otpSection_flex_card">
-    <label class="form-label" style="font-weight: 600">Enter OTP</label>
-    <div class="input-with-icon">
-      <i class="bi bi-lock-fill"></i>
-      <!-- maxlength set to 6 (consistent with placeholder and backend) -->
-      <input
-        type="text"
-        class="form-control"
-        required
-        id="otpInput"
-        placeholder="Enter 6-digit code"
-        maxlength="6"
-        inputmode="numeric"
-        pattern="\d{6}"
-      />
-    </div>
-  </div>
-  <div
-    class="d-flex justify-content-end gap-3 mt-3 otpSection_flex_card">
-    <button class="btn btn-outline-secondary" type="button" id="backBtn">Back</button>
-    <!-- removed inline onclick so JS controls redirect -->
-    <button class="btn btn-primary" type="button" id="verifyBtn">Verify &amp; Sign In</button>
-  </div>
-</div>
+              <div
+                id="otpSection"
+                class="mb-3 otpSection_flex"
+                style="display: none">
+                <div class="otpSection_flex_card">
+                  <label class="form-label" style="font-weight: 600">Enter OTP</label>
+                  <div class="input-with-icon">
+                    <i class="bi bi-lock-fill"></i>
+        
+                    <input
+                      type="text"
+                      class="form-control"
+                      required
+                      id="otpInput"
+                      placeholder="Enter 6-digit code"
+                      maxlength="6"
+                      inputmode="numeric"
+                      pattern="\d{6}"
+                    />
+                  </div>
+                    <div class="text-end mt-2">
+                    <button class="btn btn-link p-0" id="resendOtpBtn" style="font-size: 0.9rem">
+                      Resend OTP
+                    </button>
+                    <span id="resendTimer" class="text-muted ms-2"></span>
+                  </div>
+                </div>
+                <div
+                  class="d-flex justify-content-end gap-3 mt-3 otpSection_flex_card">
+                  <button class="btn btn-outline-secondary" type="button" id="backBtn">Back</button>
+          
+                  <button class="btn btn-primary" type="button" id="verifyBtn">Verify &amp; Sign In</button>
+                </div>
+              </div>
 
 
           <!-- Simple Sign Up Section -->

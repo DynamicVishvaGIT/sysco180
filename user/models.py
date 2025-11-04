@@ -149,7 +149,7 @@ user_choice = [
 class LoginLogs(models.Model):
    
     USER_TYPE           = models.CharField(max_length=255, blank=True, choices=user_choice, null=True)
-    USER                = models.CharField(max_length=16,blank=True,null=True)
+    USER                = models.CharField(max_length=500,blank=True,null=True)
     LOGIN_DATETIME      = models.DateTimeField(null=True,blank=True)
     LOGOUT_DATETIME     = models.DateTimeField(null=True,blank=True)
     LOGIN_SESSION       = models.TextField(blank=True,null=True)

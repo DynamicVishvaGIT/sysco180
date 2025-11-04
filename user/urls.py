@@ -30,14 +30,7 @@ urlpatterns = [
 
 # Bank User ------------------------------------------->
 
-    path('bank_user_dashboard',bank_user_dashboard),
-    path('bank_user_head',bank_user_head),
-    path('bank_user_script',bank_user_script),
-    path('bank_user_header',bank_user_header),
-    path('my_cases',my_cases),
-    path('my_cases_view',my_cases_view),
-    path('upload_cases',upload_cases),
-
+ 
 # Mediator ------------------------------------------->
 
     path('mediator_dashboard',mediator_dashboard),
@@ -56,7 +49,7 @@ urlpatterns = [
     path('arbitrator_view',arbitrator_view),
     path('cash_queue',cash_queue),
     path('cash_queue_view',cash_queue_view),
-    path('upload_cases',upload_cases),
+    # path('upload_cases',upload_cases),
     path('sysco_admin_header',sysco_admin_header),
     path('sysco_admin_head',sysco_admin_head),
     path('sysco_admin_script',sysco_admin_script),
