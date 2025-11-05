@@ -58,9 +58,7 @@ $("#Continue_with").click(function (e) {
 
             localStorage.setItem("user_registration_type", userType);
             localStorage.setItem("terms_and_conditions", terms);
-
-            toastr.success("User type saved: " + userType);
-
+            
             setTimeout(() => {
                 if (userType === "arbitrator") {
                     window.location.href = "/arbitrator";

@@ -29,7 +29,7 @@ model_map = {
 def login(request):
     return render(request,'login.html')
 
-def add_user(request):
+def registration(request):
     return render(request,'add_user.html')
 
 def arbitrator(request):
@@ -39,7 +39,8 @@ def mediator(request):
     return render(request,'mediator.html')
 
 def personal_information(request):
-    return render(request,'personal_information.html')
+    bank_name= BankMaster.objects.filter(IS_DELETED=False)
+    return render(request,'personal_information.html',context={"bank_name":bank_name})
 
 def view_details_page(request):
     return render(request,'view_details.html')
@@ -245,8 +246,9 @@ def user_registration(request):
             return JsonResponse({"message": "Mediator registration successful","type":user_type, "id": mediator.id}, status=200)
 
         elif user_type.lower() == "bank_individual":
-             state_id = request.POST.get("state")
-             city_id  = request.POST.get("city")
+             state_id   = request.POST.get("state")
+             city_id    = request.POST.get("city")
+             bank_name  = request.POST.get("bank_name")
 
              state_name = None
              city_name = None
@@ -259,11 +261,14 @@ def user_registration(request):
                     city_obj = CityMaster.objects.filter(id=city_id, IS_DELETED=False).first()
                     city_name = city_obj.NAME if city_obj else None
 
+             bank_name_instance = BankMaster.objects.get(id=bank_name)
+
              bank_user = Bank_individual_user.objects.create(
                 USER_TYPE               = user_type,
                 FULL_NAME               = request.POST.get("full_name"),
                 EMAIL_ID                = request.POST.get("email_id"),
                 CONTACT_NO              = request.POST.get("contact_no"),
+                BANK                    = bank_name_instance,
                 NATIONALITY             = request.POST.get("nationality"),
                 STATE                   = state_name,
                 CITY                    = city_name,
@@ -293,7 +298,7 @@ def view_registration_details(request, id):
     elif user_type == "mediator":
         mediator = Mediator.objects.filter(id=id, IS_DELETED=False).all()
     elif user_type == "bank_individual":
-       bank_individual = Bank_individual_user.objects.filter(id=id, IS_DELETED=False).all()
+       bank_individual = Bank_individual_user.objects.filter(id=id,IS_DELETED=False).all()
 
     return render(request, "view_details.html", {"arbitrator": arbitrator,"mediator": mediator,"bank_individual":bank_individual,"user_type": user_type})
 

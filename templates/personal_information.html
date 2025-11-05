@@ -69,6 +69,16 @@
                   <label class="form-label fw-bold">Contact No</label>
                   <input type="tel" class="form-control" id="contact_no" name="contact_no" placeholder="Enter your contact no" required pattern="[0-9]{10}" minlength="10" maxlength="10" inputmode="numeric" oninput="this.value = this.value.replace(/[^0-9]/g, '');">
                 </div>
+                 <div class="mb-3 text-start">
+                  <label class="form-label fw-bold">Bank Name</label>
+                 <select name="bank_name" class="form-control" id="bank_name">
+                      <option selected disabled>Select Bank Name</option>
+                      {% for bank in bank_name %}
+                          <option value="{{ bank.id }}">{{ bank.BANK_NAME }}</option>
+                      {% endfor %}
+                      <option value="other">Others</option>
+                  </select>
+                </div>
                 <div class="mb-3 text-start">
                   <label class="form-label fw-bold">Indian National / Foreign </label>
                   <textarea class="form-control" rows="2" id="nationality" name="nationality" placeholder="Enter Your Nationality "></textarea>

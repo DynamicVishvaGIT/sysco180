@@ -4,6 +4,7 @@ from rest_framework.decorators import api_view
 from django.http import JsonResponse, FileResponse, Http404
 from bank_user.models import *
 from user.utils.auth_decorator import custom_authentication
+from django.db.models import Prefetch
 import logging
 logger = logging.getLogger()
 
@@ -108,6 +109,29 @@ def create_single_case(request):
         return JsonResponse({"message": "Something went wrong","error": str(e)}, status=500)
 
 
+def load_cases(request):
+    try:
+        cases = Case.objects.filter(IS_DELETED=False).prefetch_related(Prefetch('details',queryset=CasePartyDetails.objects.filter(IS_DELETED=False)))
+
+        data = []
+        for case in cases:
+            party_names = [d.PARTY_NAME for d in case.details.all() if d.PARTY_NAME]
+
+            data.append({
+                "id": case.id,
+                "CUSTOMER_NAME": case.CUSTOMER_NAME,
+                "EMAIL_ID": case.EMAIL_ID,
+                "PARTY_NAMES": party_names,
+                "UPLOAD_DATE": case.CREATED_DATE.strftime("%d-%m-%Y") if case.CREATED_DATE else "",
+                "ADVOCATE_NAME": case.ADVOCATE_NAME ,
+                "ARBITRATOR_NAME": case.ARBITRATOR_NAME ,
+            })
+
+        return JsonResponse({"data": data}, status=200)
+
+    except Exception as e:
+        print(e)
+        return JsonResponse({"error": "Something went wrong"}, status=500)
 
 
 

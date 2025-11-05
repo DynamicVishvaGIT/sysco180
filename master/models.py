@@ -19,7 +19,7 @@ class SoftDeleteTimestampMixin(models.Model):
         abstract = True
 
 
-class StateMaster(SoftDeleteTimestampMixin):
+class StateMaster(SoftDeleteTimestampMixin,models.Model):
     NAME = models.CharField(max_length=100, null=True, blank=True)
     CODE = models.CharField(max_length=100, null=True, blank=True)
 
@@ -36,3 +36,12 @@ class CityMaster(SoftDeleteTimestampMixin,models.Model):
 
     class Meta:
         verbose_name_plural = "City Master"
+ 
+class BankMaster(SoftDeleteTimestampMixin, models.Model):
+    BANK_NAME = models.CharField(max_length=100, null=True, blank=True)
+    BANK_TYPE = models.CharField(max_length=100, null=True, blank=True)
+
+    class Meta:
+        db_table = "master_bankmaster" 
+        verbose_name_plural = "Bank Master"
+

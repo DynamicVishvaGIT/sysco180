@@ -1,4 +1,5 @@
 from django.db import models
+from user.models import *
 
 # Create your models here.
 
@@ -36,7 +37,7 @@ class Case(SoftDeleteTimestampMixin, models.Model):
         verbose_name_plural = "Cases"
 
 class CasePartyDetails(SoftDeleteTimestampMixin, models.Model):
-    CASE                       = models.ForeignKey("bank_user.Case", on_delete=models.CASCADE,null=True,blank=True)
+    CASE                       = models.ForeignKey("bank_user.Case", on_delete=models.CASCADE,null=True,blank=True, related_name="details" )
     PARTY_NAME                 = models.CharField(max_length=50, blank=True, null=True, verbose_name="Party Name")
     PARTY_ADDRESS              = models.TextField(blank=True, null=True, verbose_name="Party Address")
     PENDING_DUE_AMOUNT         = models.DecimalField(max_digits=12, decimal_places=2, blank=True, null=True, verbose_name="Pending Due Amount (₹)")
@@ -49,17 +50,17 @@ class CasePartyDetails(SoftDeleteTimestampMixin, models.Model):
         verbose_name_plural = "Case Party Details"
 
 
-class Bank(SoftDeleteTimestampMixin, models.Model):
+# class Bank(SoftDeleteTimestampMixin, models.Model):
 
-    BANK_NAME    = models.CharField(max_length=225, blank=True, null=True, verbose_name="Bank Name")
+#     BANK_NAME    = models.CharField(max_length=225, blank=True, null=True, verbose_name="Bank Name")
 
-    class Meta:
-        verbose_name = "Bank"
-        verbose_name_plural = "Bank"
+#     class Meta:
+#         verbose_name = "Bank"
+#         verbose_name_plural = "Bank"
 
 class Bulk_Upload_Cases(SoftDeleteTimestampMixin, models.Model):
 
-    BANK                   = models.ForeignKey("bank_user.Bank", on_delete=models.CASCADE,null=True,blank=True)
+    BANK_USER              = models.ForeignKey("user.Bank_individual_user", on_delete=models.CASCADE,null=True,blank=True)
     INTENT_REFERENCE_NO    = models.CharField(max_length=100, blank=True, null=True, verbose_name="Intent Reference Number")
     EMAIL_ID               = models.EmailField(max_length=254, blank=True, null=True, verbose_name="Email ID")
     LOAN_AGREEMENT_NO      = models.CharField(max_length=100, blank=True, null=True, verbose_name="Loan Agreement / Prospect Number")

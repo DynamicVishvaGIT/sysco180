@@ -13,6 +13,7 @@ urlpatterns = [
     path('my_cases_view',my_cases_view),
     path('upload_cases',upload_cases),
     path("create_single_case",create_single_case),
+    path("load_cases",load_cases),
 
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

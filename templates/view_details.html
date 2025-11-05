@@ -323,6 +323,7 @@
                       <p><strong>Full Name:</strong> {{ data.FULL_NAME }}</p>
                       <p><strong>Email:</strong> {{ data.EMAIL_ID }}</p>
                       <p><strong>Mobile:</strong> {{ data.CONTACT_NO }}</p>
+                      <p><strong>Bank Name:</strong> {{ data.BANK.BANK_NAME }}</p>
                       <p><strong>Indian National / Foreign:</strong> {{ data.NATIONALITY }}</p>
                       <p><strong>State:</strong> {{ data.STATE }}</p>
                       <p><strong>City:</strong> {{ data.CITY }}</p>
@@ -344,8 +345,7 @@
                     <div class="d-flex justify-content-between">
                      <!-- <button class="btn btn-outline-secondary" onclick="window.location.href='personal_info.php'">← Back</button>-->
                       <a href="#" onclick="history.back(); return false;" class="btn btn-outline-secondary">← Back</a>
-
-                      <button class="btn btn-primary" id="submitBtn">Submit Registration →</button>
+                      <a href="/"  class="btn btn-primary">Continue →</a>
                     </div>
 
 
@@ -354,7 +354,11 @@
         </div>
       </div>
 
-   <?php include('script.php')?>
+ {% include 'script.html' %}
+
+
+
+ 
 
 </body>
 </html>

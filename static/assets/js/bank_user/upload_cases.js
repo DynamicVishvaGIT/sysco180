@@ -109,4 +109,49 @@ $("#create_single_case_form").on('submit', function (e) {
 });
 
 
+if ($.fn.DataTable.isDataTable('#my_cases_table_id')) {
+    $('#my_cases_table_id').DataTable().clear().destroy();
+}
+
+var t = $('#my_cases_table_id').DataTable({
+    ajax: 'load_cases',
+    processing: true,
+    responsive: true,
+    columns: [
+        {
+            data: null,
+            render: function (data, type, row, meta) {
+                return meta.row + 1;
+            }
+        },
+        { data: 'CUSTOMER_NAME' },
+        { data: 'EMAIL_ID' },
+        {
+            data: 'PARTY_NAMES',
+            render: function(data){
+                return data.length ? data.join(' vs ') : '-';
+            }
+        },
+        { data: 'UPLOAD_DATE' },
+        { data: 'ADVOCATE_NAME' },
+        { data: 'ARBITRATOR_NAME' },
+        {
+            data: null,
+            render: function (data) {
+                return `
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button>
+                    <div class="dropdown-menu">
+                        <a href="/my_cases_view" class="dropdown-item view_case_details" data-id="${data.id}"><i class="fa fa-eye"> </i> View Details</a>
+                        <a href="javascript:void(0)" class="dropdown-item edit_case" data-id="${data.id}"><i class="fa fa-pencil"> </i> Edit</a>
+                        <a href="javascript:void(0)" class="dropdown-item delete_case" data-id="${data.id}"><i class="fa fa-trash"> </i> Delete</a>
+
+                    </div>
+                </div>`;
+            }
+        }
+    ]
+});
+
+
 

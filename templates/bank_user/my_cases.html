@@ -19,10 +19,10 @@
                             <p class="num">1247 of 1247 cases</p>
                         </div>
                         <div class="d-flex align-items-center gap-2">
-                            <div class="input-group ser_group">
+                            {% comment %} <div class="input-group ser_group">
                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-magnifying-glass"></i></span>
                                 <input type="text" class="form-control" placeholder="Search by case ID, parties, agreement...">
-                            </div>
+                            </div> {% endcomment %}
                             <select class="my_select selectpicker" data-container="body">
                                 <option>All Status</option>
                                 <option>Total Cases</option>
@@ -42,105 +42,22 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <table class="new_table table table-hover dt-responsive myTable">
+                    <table class="new_table table table-hover dt-responsive myTable" id="my_cases_table_id">
                         <thead>
                             <tr>
-                                <th>Case ID	</th>
-                                <th>Parties	</th>
-                                <th>Amount	</th>
-                                <th>Status	</th>
+                                <th>Sr.No</th>
+                                <th>Customer Name</th>
+                                <th>Email Id</th>
+                                <th>Party Name</th>
                                 <th>Upload Date	</th>
-                                <th>Next Hearing</th>	
+                                <th>Advocate Name</th>	
+                                <th>Arbitrator Name </th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>PROS-202501-331	</td>
-                                <td>BOB vs Anita Desai	</td>
-                                <td>₹39,91,923</td>
-                                <td><span class="status blue">Under Review</span></td>
-                                <td>27 Dec 2024	</td>
-                                <td>22 May 2025</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                            <li><a class="dropdown-item" href="b_my_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-down me-2"></i>Downlaod Documents</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>PROS-202501-331	</td>
-                                <td>BOB vs Anita Desai	</td>
-                                <td>₹39,91,923	</td>
-                                <td><span class="status pending_validation">Pending Validation</span></td>
-                                <td>27 Dec 2024	</td>
-                                <td>22 May 2025</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                             <li><a class="dropdown-item" href="b_my_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-down me-2"></i>Downlaod Documents</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>PROS-202501-331	</td>
-                                <td>BOB vs Anita Desai </td>
-                                <td>₹39,91,923	</td>
-                                <td><span class="status passed_validation">Award Passed</span></td>
-                                <td>27 Dec 2024	</td>
-                                <td>22 May 2025</td>
-                            
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                             <li><a class="dropdown-item" href="b_my_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-down me-2"></i>Downlaod Documents</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>PROS-202501-331</td>
-                                <td>BOB vs Anita Desai</td>
-                                <td>₹39,91,923</td>
-                                <td><span class="status assigned_validation">Assigned</span></td>
-                                <td>27 Dec 2024	</td>
-                                <td>22 May 2025</td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button class="bg_n_btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                            <i class="bi bi-three-dots"></i>
-                                        </button>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                             <li><a class="dropdown-item" href="b_my_cases_view.php"><i class="fa-regular fa-eye me-2"></i>View</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-circle-down me-2"></i>ownlaod Documents</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-file-zipper me-2"></i>Generate Report</a></li>
-                                        </ul>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
                     </table>
                 </div>
             </div>
-
         </div>
 
     </div>
@@ -151,6 +68,7 @@
             responsive: true
         });
     </script>
+          <script src="\static\assets\js\bank_user\upload_cases.js"></script>
 </body>
 
 </html>

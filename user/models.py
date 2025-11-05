@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import date
+from master.models import *
 
 # Create your models here.
 
@@ -122,6 +123,7 @@ class Mediator(SoftDeleteTimestampMixin, models.Model):
         verbose_name_plural = "Mediators"
 
 class Bank_individual_user(SoftDeleteTimestampMixin,models.Model):
+    BANK              = models.ForeignKey("master.BankMaster", on_delete=models.CASCADE,null=True,blank=True)
     USER_TYPE         = models.CharField(max_length=50, blank=True, null=True)
     FULL_NAME         = models.CharField(max_length=200, blank=True, null=True)
     EMAIL_ID          = models.EmailField(max_length=254, blank=True, null=True)
