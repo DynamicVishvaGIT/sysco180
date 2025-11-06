@@ -3,6 +3,10 @@ from django.shortcuts import render
 from rest_framework.decorators import api_view 
 from django.http import JsonResponse, FileResponse, Http404
 from bank_user.models import *
+import os
+import pandas as pd
+from django.db import transaction
+
 from user.utils.auth_decorator import custom_authentication
 from django.db.models import Prefetch
 import logging
@@ -132,6 +136,87 @@ def load_cases(request):
     except Exception as e:
         print(e)
         return JsonResponse({"error": "Something went wrong"}, status=500)
+    
+
+@api_view(["POST"])
+# @custom_authentication
+def upload_bulk_cases(request):
+    try:
+        login_id     = 4
+        excel_file   = request.FILES.get("bulk_cases_excel_sheet")
+
+        logger.info(f''' 
+            login_id   = {login_id}
+            excel_file = {excel_file}
+ ''')
+
+        if not excel_file:
+            return JsonResponse({"message": "Excel file is required"}, status=400)
+
+        ext = os.path.splitext(excel_file.name)[1].lower()
+        if ext not in [".xls", ".xlsx"]:
+            return JsonResponse({"message": "Upload only .xls or .xlsx format"}, status=412)
+
+        df = pd.read_excel(excel_file, dtype=str).fillna("")
+        df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
+
+        required = [
+            'intent_ref_no', 'email_id', 'loan_agreement_no', 'customer_name',
+            'customer_address', 'advocate_name', 'arbitrator_name', 'arbitrator_address',
+            'lrn_date', 'lrn_ref_no', 'loan_amount', 'loan_agreement_date',
+            'pending_due_amount', 'total_outstanding_amount', 'outstanding_amount_on_date',
+            'product_name'
+        ]
+
+        missing = [c for c in required if c not in df.columns]
+        if missing:
+            return JsonResponse({"message": f"Missing columns in Excel: {missing}"}, status=400)
+
+        bank_cases = BankCases.objects.create(BANK_USER_id=login_id)
+
+        with transaction.atomic():
+            for idx, row in df.iterrows():
+
+                case_obj = Cases.objects.create(
+                    BANK_CASES=bank_cases,
+                    INTENT_REFERENCE_NO=row['intent_ref_no'],
+                    EMAIL_ID=row['email_id'],
+                    LOAN_AGREEMENT_NO=row['loan_agreement_no'],
+                    CUSTOMER_NAME=row['customer_name'],
+                    CUSTOMER_ADDRESS=row['customer_address'],
+                    ADVOCATE_NAME=row['advocate_name'],
+                    ARBITRATOR_NAME=row['arbitrator_name'],
+                    ARBITRATOR_ADDRESS=row['arbitrator_address'],
+                    LRN_DATE=pd.to_datetime(row['lrn_date']).date() if row['lrn_date'] else None,
+                    LRN_REFERENCE_NO=row['lrn_ref_no'],
+                    LOAN_AMOUNT=row['loan_amount'] or None,
+                    LOAN_AGREEMENT_DATE=pd.to_datetime(row['loan_agreement_date']).date() if row['loan_agreement_date'] else None,
+                    PENDING_DUE_AMOUNT=row['pending_due_amount'] or None,
+                    TOTAL_OUTSTANDING_AMOUNT=row['total_outstanding_amount'] or None,
+                    OUTSTANDING_AMOUNT_ON_DATE=pd.to_datetime(row['outstanding_amount_on_date']).date() if row['outstanding_amount_on_date'] else None,
+                    PRODUCT_NAME=row['product_name']
+                )
+
+                for col in df.columns:
+                    if col.startswith("party_name_"):
+                        index = col.split("_")[-1] 
+                        p_name = row[col].strip()
+                        p_address_col = f"party_address_{index}"
+                        p_address = row.get(p_address_col, "").strip()
+
+                        if p_name:
+                            CasePartyDetails.objects.create(
+                                BULK_UPLOAD_CASE=case_obj,
+                                PARTY_NAME=p_name,
+                                PARTY_ADDRESS=p_address
+                            )
+
+        return JsonResponse({"message": "Bulk Case Upload Successful"}, status=201)
+
+    except Exception as e:
+        return JsonResponse({"message": f"Something went wrong: {str(e)}"}, status=500)
+
+
 
 
 

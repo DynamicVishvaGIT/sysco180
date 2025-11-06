@@ -13,6 +13,7 @@ urlpatterns = [
     path('my_cases_view',my_cases_view),
     path('upload_cases',upload_cases),
     path("create_single_case",create_single_case),
+    path("upload_bulk_cases",upload_bulk_cases),
     path("load_cases",load_cases),
 
 

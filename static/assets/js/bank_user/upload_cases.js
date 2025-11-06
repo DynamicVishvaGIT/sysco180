@@ -155,3 +155,37 @@ var t = $('#my_cases_table_id').DataTable({
 
 
 
+$("#bulk_upload_form").on("submit", function (e) {
+    e.preventDefault();
+
+    let file = $("#bulk_cases_excel_sheet").val();
+
+    if (!file) {
+        toastr.error("Please select your excel sheet to upload");
+        return;
+    }
+
+    let formData = new FormData(this);
+
+    $.ajax({
+        url: "/upload_bulk_cases",
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        beforeSend: function () {
+            $(".submit_btn").prop("disabled", true).text("Uploading...");
+        },
+        success: function (response) {
+            toastr.success(response.message);
+            $("#bulk_upload_form")[0].reset();
+        },
+        error: function (xhr) {
+            toastr.error(xhr.responseJSON.message);
+        },
+        complete: function () {
+            $(".submit_btn").prop("disabled", false).text("Upload Now");
+        }
+    });
+});
+

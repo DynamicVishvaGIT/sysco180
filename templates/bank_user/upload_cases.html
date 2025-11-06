@@ -3,6 +3,13 @@
 
 <head>
     {% include 'bank_user/head.html' %}
+    <style>
+        .submit_btn {
+    padding: 8px 25px;
+    font-size: 15px;
+}
+
+    </style>
 </head>
 <body>
 
@@ -27,38 +34,44 @@
                         <button class="nav_link" id="single_case-tab" data-bs-toggle="tab" data-bs-target="#single_case" type="button" role="tab" aria-controls="single_case" aria-selected="false">Single Case</button>
                     </div>
 
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade active show text-center bulk_upload_tab" id="bulk_upload" role="tabpanel" aria-labelledby="bulk_upload-tab">
-                            <div class="mb-3 text-center">
-                                {% comment %} <label class="form-label">Select Bank Name</label> {% endcomment %}
-                                {% comment %} <div class="d-inline-block position-relative">
-                                    <select class="form-select form_control" id="bank_name" name="bank_name" style="width:auto; min-width:150px; text-align:center; appearance: none; padding-right: 25px;" required>
-                                        <option selected disabled>Select Bank Name</option>
-                                        <option >HDFC Bank</option>
-                                        <option>ICICI Bank</option>
-                                        <option>SBI Bank</option>
-                                        <option>Axis Bank</option>
-                                    </select>
-                                    <i class="fa-solid fa-caret-down position-absolute" style="right:8px; top:50%; transform:translateY(-50%); pointer-events:none;"></i>
-                                </div> {% endcomment %}
+                   
+
+                        <form id="bulk_upload_form" enctype="multipart/form-data">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade active show text-center bulk_upload_tab" id="bulk_upload" role="tabpanel" aria-labelledby="bulk_upload-tab">
+
+                                    <div class="mb-3 text-center"></div>
+
+                                    <div class="u_icon">
+                                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                    </div>
+
+                                    <p class="mb-1">Upload bulk cases file</p>
+                                    <span>Drag and drop your Excel or CSV file here, or click to browse</span>
+
+                                    <div class="my-3">
+                                        <label for="bulk_cases_excel_sheet" class="choose_file_btn">
+                                            Choose File 
+                                            <input type="file" name="bulk_cases_excel_sheet" id="bulk_cases_excel_sheet" class="d-none">
+                                        </label>
+                                    </div>
+
+                                    {% load static %}
+                                    <div class="d-flex justify-content-between align-items-center w-100 mt-3 px-3">
+
+                                        <a href="{% static '\assets\Bulk_excel_format\Sample Intent Data for Arbitration Updated Sheet.xlsx' %}" download>
+                                            <i class="fa-solid fa-download"></i> Download sample sheet
+                                        </a>
+
+                                        <button type="submit" class="btn btn-success submit_btn">Upload Now</button>
+
+                                    </div>
+
+                                </div>
                             </div>
-                            <div class="u_icon">
-                                <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                            </div>
-                            <p class="mb-1">Upload bulk cases file</p>
-                            <span>Drag and drop your Excel or CSV file here, or click to browse</span>
-                            <div class="my-3"><label for="choose_file" class="choose_file_btn">Choose File <input type="file" name="" id="choose_file" class="d-none"></label></div>
-                            
-                           {% load static %}
-                            <div>
-                                <a href="{% static 'assets/format_sheet/Sample Intent Data for Arbitration.xlsx' %}" download>
-                                    <button type="button" class="download_btn">
-                                        <i class="fa-solid fa-download"></i> Download Template
-                                    </button>
-                                </a>
-                            </div>
-                            
-                        </div>
+                        </form>
+
+
 
                         <div class="tab-pane fade single_case_tab" id="single_case" role="tabpanel" aria-labelledby="single_case-tab">
                             <div class="heading">

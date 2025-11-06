@@ -15,7 +15,8 @@ def custom_authentication(view_func):
             # Extract headers
             device_type = request.headers.get("device-type")
 
-            # logger.info(f"device_type = {device_type}")
+            logger.info(f"device_type = {device_type}")
+        
             if device_type == "mobile":
                 auth_token  = request.headers.get("Authorization") or request.META.get("HTTP_AUTHORIZATION")
 
@@ -42,7 +43,7 @@ def custom_authentication(view_func):
                     request.login_id    = request.session['USER_ID']
                     request.user_type   = request.session['USER_TYPE']
                 else:
-                    return redirect("/login")
+                    return redirect("/")
             return view_func(request, *args, **kwargs)
 
         except Exception as e:
