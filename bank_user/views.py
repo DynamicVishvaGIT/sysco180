@@ -138,17 +138,18 @@ def load_cases(request):
         return JsonResponse({"error": "Something went wrong"}, status=500)
     
 
+
 @api_view(["POST"])
 # @custom_authentication
 def upload_bulk_cases(request):
     try:
-        login_id     = 4
-        excel_file   = request.FILES.get("bulk_cases_excel_sheet")
+        login_id = 4
+        excel_file = request.FILES.get("bulk_cases_excel_sheet")
 
-        logger.info(f''' 
+        logger.info(f'''
             login_id   = {login_id}
             excel_file = {excel_file}
- ''')
+        ''')
 
         if not excel_file:
             return JsonResponse({"message": "Excel file is required"}, status=400)
@@ -157,6 +158,7 @@ def upload_bulk_cases(request):
         if ext not in [".xls", ".xlsx"]:
             return JsonResponse({"message": "Upload only .xls or .xlsx format"}, status=412)
 
+        # Read Excel
         df = pd.read_excel(excel_file, dtype=str).fillna("")
         df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
 
@@ -172,10 +174,21 @@ def upload_bulk_cases(request):
         if missing:
             return JsonResponse({"message": f"Missing columns in Excel: {missing}"}, status=400)
 
+        # ✅ Remove rows where all required fields are blank
+        df = df[~(df[required].replace("", None).isnull().all(axis=1))]
+
         bank_cases = BankCases.objects.create(BANK_USER_id=login_id)
+
+        inserted_count = 0
+        skipped_count = 0
 
         with transaction.atomic():
             for idx, row in df.iterrows():
+
+                # ✅ Skip completely empty rows
+                if not any(str(v).strip() for v in row.values):
+                    skipped_count += 1
+                    continue
 
                 case_obj = Cases.objects.create(
                     BANK_CASES=bank_cases,
@@ -197,12 +210,12 @@ def upload_bulk_cases(request):
                     PRODUCT_NAME=row['product_name']
                 )
 
+                # ✅ Insert Party Details (Dynamic Columns)
                 for col in df.columns:
                     if col.startswith("party_name_"):
-                        index = col.split("_")[-1] 
+                        index = col.split("_")[-1]
                         p_name = row[col].strip()
-                        p_address_col = f"party_address_{index}"
-                        p_address = row.get(p_address_col, "").strip()
+                        p_address = row.get(f"party_address_{index}", "").strip()
 
                         if p_name:
                             CasePartyDetails.objects.create(
@@ -211,11 +224,17 @@ def upload_bulk_cases(request):
                                 PARTY_ADDRESS=p_address
                             )
 
-        return JsonResponse({"message": "Bulk Case Upload Successful"}, status=201)
+                inserted_count += 1
+
+        return JsonResponse({
+            "message": "Bulk Case Upload Successful",
+            "inserted_records": inserted_count,
+            "skipped_blank_rows": skipped_count
+        }, status=201)
 
     except Exception as e:
+        logger.error(f"Error: {str(e)}", exc_info=True)
         return JsonResponse({"message": f"Something went wrong: {str(e)}"}, status=500)
-
 
 
 
