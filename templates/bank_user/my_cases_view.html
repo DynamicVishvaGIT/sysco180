@@ -2,6 +2,12 @@
 <html lang="en">
 <head>
     {% include 'bank_user/head.html' %}
+    <style>
+    h2.text-center, h4.text-center {
+        font-weight: 600;
+    }
+</style>
+
 </head>
 <body>
     
@@ -29,127 +35,131 @@
                             <div class="tab-pane fade active show overview_tab" id="overview" role="tabpanel" aria-labelledby="overview-tab">
                                 
                                     <div class="heading">
-                                        <h2>Create Single Case</h2>
+                                       <h4 class="text-center mb-3">Customer Details View</h4>
                                     </div>
+                                    <br>
                                     <form action="">
                                         <div class="row">
+
                                             <!-- Intent Ref No -->
-                                                <div class="col-lg-6 mb-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Intent Ref No</label>
-                                                        <input type="text" class="form-control form_control" name="intent_ref_no">
-                                                    </div>
-                                                </div>
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Intent Reference Number</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.INTENT_REFERENCE_NO }}" readonly>
+                                            </div>
 
-                                            <!-- Case Nos -->
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Email Address</label>
-                                                    <input type="email" class="form-control form_control" name="email_add">
-                                                </div>
+                                            <!-- Email Address -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Email Id</label>
+                                                <input type="email" class="form-control form_control" value="{{ case.EMAIL_ID }}" readonly>
+                                            </div>
 
-                                                <!-- Loan Agreement / Prospect No -->
-                                                <div class="col-lg-6 mb-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Loan Agreement / Prospect No</label>
-                                                        <input type="text" class="form-control form_control" name="loan_agreement_no">
-                                                    </div>
-                                                </div>
+                                            <!-- Loan Agreement / Prospect No -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Loan Agreement / Prospect Number</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.LOAN_AGREEMENT_NO }}" readonly>
+                                            </div>
 
-                                                <!-- Cust Name 1 -->
-                                                <div class="col-lg-6 mb-4">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Cust Name 1</label>
-                                                        <input type="text" class="form-control form_control" name="cust_name_1">
-                                                    </div>
-                                                </div>
+                                            <!-- Customer Name -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Customer Name</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.CUSTOMER_NAME }}" readonly>
+                                            </div>
 
-                                            <!-- Address -->
-                                                <div class="col-lg-12 mb-3">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Address</label>
-                                                        <textarea class="form-control form_control" name="address" rows="3" placeholder="Enter address"></textarea>
-                                                    </div>
-                                                 </div>
+                                            <!-- Customer Address -->
+                                            <div class="col-lg-12 mb-3">
+                                                <label class="form-label">Customer Address</label>
+                                                <textarea class="form-control form_control" rows="3" readonly>{{ case.CUSTOMER_ADDRESS }}</textarea>
+                                            </div>
+                                            <br><br>
+                                            <hr>
+                                            <br>
+                                            <!-- Party Details -->
+                                            <div class="col-12 mb-3">
+                                                <h4 class="text-center mb-3">Party Details</h4> <br>
 
-                                                <div class="col-12 mb-3">
-                                                    <label class="form-label">Party Details:</label>
-                                                    <div id="parties-section">
-                                                        <!-- Party 1 always present -->
-                                                        <div class="row mb-2 party-group align-items-center" data-party="1">
-                                                            <div class="col-lg-6">
-                                                                <input type="text" class="form-control form_control" name="party_1" placeholder="Name">
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <textarea class="form-control form_control" name="party_1_add" rows="2" placeholder="Address"></textarea>
-                                                            </div>
-                                                            <!--<div class="col-lg-2 d-flex justify-content-start">
-                                                                <button type="button" class="btn btn-success w-100 add-party-btn">+ Add</button>
-                                                            </div>-->
+                                                <div id="parties-section">
+                                                    {% for p in parties %}
+                                                    <div class="row mb-2 party-group align-items-center">
+                                                        <div class="col-lg-6">
+                                                             <label class="form-label">Party Name</label>
+                                                            <input type="text" class="form-control form_control" value="{{ p.PARTY_NAME }}" readonly>
                                                         </div>
-
+                                                        <div class="col-lg-6">
+                                                             <label class="form-label">Party Address</label>
+                                                            <textarea class="form-control form_control" rows="2" readonly>{{ p.PARTY_ADDRESS }}</textarea>
+                                                        </div>
                                                     </div>
+                                                    {% endfor %}
                                                 </div>
+                                            </div>
+                                            <hr>
+                                            <br><br>
+                                            <!-- Financial Data -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Pending Due Amount (₹)</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.PENDING_DUE_AMOUNT }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Pending Due Amt</label>
-                                                    <input type="text" class="form-control form_control" name="pending_due_amt">
-                                                </div>
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Total Outstanding Amount (₹)</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.TOTAL_OUTSTANDING_AMOUNT }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Total Outstanding Amt</label>
-                                                    <input type="text" class="form-control form_control" name="total_outstanding_amt">
-                                                </div>
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Outstanding Amount As On</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.OUTSTANDING_AMOUNT_ON_DATE }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Outstanding Amt Date</label>
-                                                    <input type="date" class="form-control form_control" name="outstanding_amt_date">
-                                                </div>
+                                            <!-- Product -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Product Name</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.PRODUCT_NAME }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Product</label>
-                                                    <input type="text" class="form-control form_control" name="product">
-                                                </div>
+                                            <!-- Advocate -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Advocate Name</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.ADVOCATE_NAME }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Adv Name</label>
-                                                    <input type="text" class="form-control form_control" name="adv_name">
-                                                </div>
+                                            <!-- Arbitrator -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Arbitrator Name</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.ARBITRATOR_NAME }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Arb Name</label>
-                                                    <input type="text" class="form-control form_control" name="arb_name">
-                                                </div>
+                                            <div class="col-lg-12 mb-3">
+                                                <label class="form-label">Arbitrator Address</label>
+                                                <textarea class="form-control form_control" rows="3" readonly>{{ case.ARBITRATOR_ADDRESS }}</textarea>
+                                            </div>
 
-                                                <div class="col-lg-12 mb-3">
-                                                    <label class="form-label">Arb Address</label>
-                                                <textarea class="form-control form_control" name="address" rows="3" placeholder="Enter address"></textarea>
-                                                </div>
+                                            <!-- LRN -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">LRN Date</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.LRN_DATE }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">LRN Date</label>
-                                                    <input type="date" class="form-control form_control" name="lrn_date">
-                                                </div>
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">LRN Reference Number</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.LRN_REFERENCE_NO }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">LRN Ref No</label>
-                                                    <input type="text" class="form-control form_control" name="lrn_ref_no">
-                                                </div>
+                                            <!-- Loan -->
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Loan Amount (₹)</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.LOAN_AMOUNT }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Loan Amount</label>
-                                                    <input type="text" class="form-control form_control" name="loan_amount">
-                                                </div>
+                                            <div class="col-lg-6 mb-4">
+                                                <label class="form-label">Loan Agreement Date</label>
+                                                <input type="text" class="form-control form_control" value="{{ case.LOAN_AGREEMENT_DATE }}" readonly>
+                                            </div>
 
-                                                <div class="col-lg-6 mb-4">
-                                                    <label class="form-label">Loan Agreement Date</label>
-                                                    <input type="date" class="form-control form_control" name="loan_agreement_date">
-                                                </div>
+                                            
 
-                                                <div class="col-lg-12">
-                                                    <button type="submit" class="sub_btn w-100">Create Case</button>
-                                                </div>
                                         </div>
-                                   </form>
+                                    </form>
+
                             </div>
 
                             <div class="tab-pane fade document_tab" id="document" role="tabpanel" aria-labelledby="document-tab">

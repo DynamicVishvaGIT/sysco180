@@ -46,7 +46,7 @@ class Cases(SoftDeleteTimestampMixin, models.Model):
         verbose_name_plural = "Cases"
 
 class CasePartyDetails(SoftDeleteTimestampMixin, models.Model):
-    BULK_UPLOAD_CASE           = models.ForeignKey("bank_user.Cases", on_delete=models.CASCADE,null=True,blank=True)
+    BULK_UPLOAD_CASE           = models.ForeignKey("bank_user.Cases", on_delete=models.CASCADE,null=True,blank=True,related_name="details" )
     PARTY_NAME                 = models.CharField(max_length=50, blank=True, null=True, verbose_name="Party Name")
     PARTY_ADDRESS              = models.TextField(blank=True, null=True, verbose_name="Party Address")
     class Meta:

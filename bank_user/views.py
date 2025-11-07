@@ -27,8 +27,11 @@ def bank_user_dashboard(request):
 def my_cases(request):
     return render(request,'bank_user/my_cases.html')
 
-def my_cases_view(request):
-    return render(request,'bank_user/my_cases_view.html')
+def my_cases_view(request,id):
+     case    = Cases.objects.filter(IS_DELETED=False, id=id).first()
+     parties = CasePartyDetails.objects.filter(IS_DELETED=False, BULK_UPLOAD_CASE=case)
+
+     return render(request, 'bank_user/my_cases_view.html', {"case": case,"parties": parties})
 
 def upload_cases(request):
     return render(request,'bank_user/upload_cases.html')
@@ -36,28 +39,30 @@ def upload_cases(request):
 @api_view(['POST'])
 def create_single_case(request):
     try:
-        intent_reference_no   = request.POST.get('intent_reference_no')
-        email_id              = request.POST.get('email_id')
-        loan_agreement_no     = request.POST.get('loan_agreement_no')
-        customer_name         = request.POST.get('customer_name')
-        customer_address      = request.POST.get('customer_address')
-        advocate_name         = request.POST.get('advocate_name')
-        arbitrator_name       = request.POST.get('arbitrator_name')
-        arbitrator_address    = request.POST.get('arbitrator_address')
-        lrn_date              = request.POST.get('lrn_date')
-        lrn_ref_no            = request.POST.get('lrn_ref_no')
-        loan_amount           = request.POST.get('loan_amount')
-        loan_agreement_date   = request.POST.get('loan_agreement_date')
-
+        # bank_user_id          = request.session.get("USER_ID")
+        bank_user_id           = 4
+        intent_reference_no    = request.POST.get('intent_reference_no')
+        email_id               = request.POST.get('email_id')
+        loan_agreement_no      = request.POST.get('loan_agreement_no')
+        customer_name          = request.POST.get('customer_name')
+        customer_address       = request.POST.get('customer_address')
+        advocate_name          = request.POST.get('advocate_name')
+        arbitrator_name        = request.POST.get('arbitrator_name')
+        arbitrator_address     = request.POST.get('arbitrator_address')
+        lrn_date               = request.POST.get('lrn_date')
+        lrn_ref_no             = request.POST.get('lrn_ref_no')
+        loan_amount            = request.POST.get('loan_amount')
+        loan_agreement_date    = request.POST.get('loan_agreement_date')
+        pending_due_amt        = request.POST.get('pending_due_amt')
+        total_outstanding_amt  = request.POST.get('total_outstanding_amt')
+        outstanding_amt_date   = request.POST.get('outstanding_amt_date')
+        product_name           = request.POST.get('product_name')
         party_name             = request.POST.getlist('party_name')
         party_address          = request.POST.getlist('party_address')
-        pending_due_amt        = request.POST.getlist('pending_due_amt')
-        total_outstanding_amt  = request.POST.getlist('total_outstanding_amt')
-        outstanding_amt_date   = request.POST.getlist('outstanding_amt_date')
-        product_name           = request.POST.getlist('product_name')
+       
 
         logger.info(f''' 
-                    
+        bank_user_id           = {bank_user_id}           
         intent_reference_no    = {intent_reference_no}
         email_id               = {email_id}
         loan_agreement_no      = {loan_agreement_no}
@@ -79,31 +84,39 @@ def create_single_case(request):
         product_name           = {product_name}
        
 ''')
-        case = Case.objects.create(
-            INTENT_REFERENCE_NO = intent_reference_no,
-            EMAIL_ID            = email_id,
-            LOAN_AGREEMENT_NO   = loan_agreement_no,
-            CUSTOMER_NAME       = customer_name,
-            CUSTOMER_ADDRESS    = customer_address,
-            ADVOCATE_NAME       = advocate_name,
-            ARBITRATOR_NAME     = arbitrator_name,
-            ARBITRATOR_ADDRESS  = arbitrator_address,
-            LRN_DATE            = lrn_date or None,
-            LRN_REFERENCE_NO    = lrn_ref_no,
-            LOAN_AMOUNT         = loan_amount or None,
-            LOAN_AGREEMENT_DATE = loan_agreement_date or None,
+        bank_user_instance = Bank_individual_user.objects.get(id=bank_user_id)
+
+        bank_user = BankCases.objects.create(
+            BANK_USER = bank_user_instance
         )
+        
+        case = Cases.objects.create(
+            BANK_CASES                 = bank_user,
+            INTENT_REFERENCE_NO        = intent_reference_no,
+            EMAIL_ID                   = email_id,
+            LOAN_AGREEMENT_NO          = loan_agreement_no,
+            CUSTOMER_NAME              = customer_name,
+            CUSTOMER_ADDRESS           = customer_address,
+            ADVOCATE_NAME              = advocate_name,
+            ARBITRATOR_NAME            = arbitrator_name,
+            ARBITRATOR_ADDRESS         = arbitrator_address,
+            LRN_DATE                   = lrn_date or None,
+            LRN_REFERENCE_NO           = lrn_ref_no,
+            LOAN_AMOUNT                = loan_amount or None,
+            LOAN_AGREEMENT_DATE        = loan_agreement_date or None,
+            PENDING_DUE_AMOUNT         = pending_due_amt,
+            TOTAL_OUTSTANDING_AMOUNT   = total_outstanding_amt,
+            OUTSTANDING_AMOUNT_ON_DATE = outstanding_amt_date,
+            PRODUCT_NAME               = product_name,
+
+)
 
         num_entries = len(party_name)
         for i in range(num_entries):
             CasePartyDetails.objects.create(
-                CASE                       = case,
+                BULK_UPLOAD_CASE           = case,
                 PARTY_NAME                 = party_name[i] if i < len(party_name) else None,
                 PARTY_ADDRESS              = party_address[i] if i < len(party_address) else None,
-                PENDING_DUE_AMOUNT         = pending_due_amt[i] if i < len(pending_due_amt) and pending_due_amt[i] != "" else None,
-                TOTAL_OUTSTANDING_AMOUNT   = total_outstanding_amt[i] if i < len(total_outstanding_amt) and total_outstanding_amt[i] != "" else None,
-                OUTSTANDING_AMOUNT_ON_DATE = outstanding_amt_date[i] if i < len(outstanding_amt_date) and outstanding_amt_date[i] != "" else None,
-                PRODUCT_NAME               = product_name[i] if i < len(product_name) else None,
             )
 
         return JsonResponse({"message": "Case created successfully","case_id": case.id}, status=200)
@@ -115,7 +128,12 @@ def create_single_case(request):
 
 def load_cases(request):
     try:
-        cases = Case.objects.filter(IS_DELETED=False).prefetch_related(Prefetch('details',queryset=CasePartyDetails.objects.filter(IS_DELETED=False)))
+
+        bank_user_id = request.session.get("BANK_USER_ID", 4)
+
+        bank_cases_ids = BankCases.objects.filter(IS_DELETED=False,BANK_USER=bank_user_id).values_list("id", flat=True)
+
+        cases = Cases.objects.filter(IS_DELETED=False,BANK_CASES__in=bank_cases_ids).prefetch_related(Prefetch('details',queryset=CasePartyDetails.objects.filter(IS_DELETED=False)))
 
         data = []
         for case in cases:
@@ -127,8 +145,8 @@ def load_cases(request):
                 "EMAIL_ID": case.EMAIL_ID,
                 "PARTY_NAMES": party_names,
                 "UPLOAD_DATE": case.CREATED_DATE.strftime("%d-%m-%Y") if case.CREATED_DATE else "",
-                "ADVOCATE_NAME": case.ADVOCATE_NAME ,
-                "ARBITRATOR_NAME": case.ARBITRATOR_NAME ,
+                "ADVOCATE_NAME": case.ADVOCATE_NAME,
+                "ARBITRATOR_NAME": case.ARBITRATOR_NAME,
             })
 
         return JsonResponse({"data": data}, status=200)
@@ -136,7 +154,6 @@ def load_cases(request):
     except Exception as e:
         print(e)
         return JsonResponse({"error": "Something went wrong"}, status=500)
-    
 
 
 @api_view(["POST"])
@@ -158,7 +175,6 @@ def upload_bulk_cases(request):
         if ext not in [".xls", ".xlsx"]:
             return JsonResponse({"message": "Upload only .xls or .xlsx format"}, status=412)
 
-        # Read Excel
         df = pd.read_excel(excel_file, dtype=str).fillna("")
         df.columns = df.columns.str.strip().str.lower().str.replace(" ", "_")
 
@@ -174,7 +190,6 @@ def upload_bulk_cases(request):
         if missing:
             return JsonResponse({"message": f"Missing columns in Excel: {missing}"}, status=400)
 
-        # ✅ Remove rows where all required fields are blank
         df = df[~(df[required].replace("", None).isnull().all(axis=1))]
 
         bank_cases = BankCases.objects.create(BANK_USER_id=login_id)
@@ -185,7 +200,6 @@ def upload_bulk_cases(request):
         with transaction.atomic():
             for idx, row in df.iterrows():
 
-                # ✅ Skip completely empty rows
                 if not any(str(v).strip() for v in row.values):
                     skipped_count += 1
                     continue
@@ -210,7 +224,6 @@ def upload_bulk_cases(request):
                     PRODUCT_NAME=row['product_name']
                 )
 
-                # ✅ Insert Party Details (Dynamic Columns)
                 for col in df.columns:
                     if col.startswith("party_name_"):
                         index = col.split("_")[-1]

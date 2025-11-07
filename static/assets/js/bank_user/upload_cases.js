@@ -19,38 +19,15 @@ function clone_party(form_id) {
      <div class="row g-3 mb-2 party-group align-items-end clone_doc_form">
 
         <!-- Party Name -->
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-5 col-md-6">
             <label class="form-label">Party Name</label>
             <input type="text" class="form-control form_control" name="party_name" placeholder="Enter party name">
         </div>
 
         <!-- Party Address -->
-        <div class="col-lg-6 col-md-6">
+        <div class="col-lg-5 col-md-6">
             <label class="form-label">Party Address</label>
             <textarea class="form-control form_control" name="party_address" rows="2" placeholder="Enter address with pincode"></textarea>
-        </div>
-
-        <!-- Pending Due Amount -->
-        <div class="col-lg-6 mb-4">
-            <label class="form-label">Pending Due Amount (₹)</label>
-            <input type="number" step="0.01" class="form-control form_control" name="pending_due_amt" placeholder="Enter pending due amount">
-        </div>
-
-        <!-- Total Outstanding Amount -->
-        <div class="col-lg-6 mb-4">
-            <label class="form-label">Total Outstanding Amount (₹)</label>
-            <input type="number" step="0.01" class="form-control form_control" name="total_outstanding_amt" placeholder="Enter total outstanding amount">
-        </div>
-
-        <!-- SAME ROW FOR DATE + PRODUCT + BUTTONS -->
-        <div class="col-lg-5 mb-4">
-            <label class="form-label">Outstanding Amount As On</label>
-            <input type="date" class="form-control form_control" name="outstanding_amt_date">
-        </div>
-
-        <div class="col-lg-6 mb-4">
-            <label class="form-label">Product Name</label>
-            <input type="text" class="form-control form_control" name="product_name" placeholder="Enter product name">
         </div>
 
         <!-- Plus / Minus Buttons -->
@@ -142,7 +119,7 @@ var t = $('#my_cases_table_id').DataTable({
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">Action</button>
                     <div class="dropdown-menu">
-                        <a href="/my_cases_view" class="dropdown-item view_case_details" data-id="${data.id}"><i class="fa fa-eye"> </i> View Details</a>
+                        <a href="/my_cases_view/${data.id}" class="dropdown-item view_case_details" data-id="${data.id}"><i class="fa fa-eye"></i> View Details</a>
                         <a href="javascript:void(0)" class="dropdown-item edit_case" data-id="${data.id}"><i class="fa fa-pencil"> </i> Edit</a>
                         <a href="javascript:void(0)" class="dropdown-item delete_case" data-id="${data.id}"><i class="fa fa-trash"> </i> Delete</a>
 

@@ -10,7 +10,7 @@ urlpatterns = [
     path('bank_user_script',bank_user_script),
     path('bank_user_header',bank_user_header),
     path('my_cases',my_cases),
-    path('my_cases_view',my_cases_view),
+    path('my_cases_view/<id>',my_cases_view),
     path('upload_cases',upload_cases),
     path("create_single_case",create_single_case),
     path("upload_bulk_cases",upload_bulk_cases),
