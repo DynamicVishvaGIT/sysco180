@@ -13,34 +13,34 @@ import logging
 logger = logging.getLogger()
 
 def bank_user_head(request):
-    return render(request,'bank_user/head.html')
+    return render(request,'head.html')
 
 def bank_user_script(request):
-    return render(request,'bank_user/script.html')
+    return render(request,'script.html')
 
 def bank_user_header(request):
-    return render(request,'bank_user/header.html')
+    return render(request,'header.html')
 
 def bank_user_dashboard(request):
-    return render(request,'bank_user/bank_user_dashboard.html')
+    return render(request,'bank_user_dashboard.html')
 
 def my_cases(request):
-    return render(request,'bank_user/my_cases.html')
+    return render(request,'my_cases.html')
 
 def my_cases_view(request,id):
      case    = Cases.objects.filter(IS_DELETED=False, id=id).first()
      parties = CasePartyDetails.objects.filter(IS_DELETED=False, BULK_UPLOAD_CASE=case)
 
-     return render(request, 'bank_user/my_cases_view.html', {"case": case,"parties": parties})
+     return render(request, 'my_cases_view.html', {"case": case,"parties": parties})
 
 def upload_cases(request):
-    return render(request,'bank_user/upload_cases.html')
+    return render(request,'upload_cases.html')
 
 @api_view(['POST'])
 def create_single_case(request):
     try:
-        # bank_user_id          = request.session.get("USER_ID")
-        bank_user_id           = 4
+        bank_user_id           = request.session.get("USER_ID")
+        user_type              = request.session.get("USER_TYPE")
         intent_reference_no    = request.POST.get('intent_reference_no')
         email_id               = request.POST.get('email_id')
         loan_agreement_no      = request.POST.get('loan_agreement_no')
@@ -62,7 +62,8 @@ def create_single_case(request):
        
 
         logger.info(f''' 
-        bank_user_id           = {bank_user_id}           
+        bank_user_id           = {bank_user_id} 
+        user_type              = {user_type}          
         intent_reference_no    = {intent_reference_no}
         email_id               = {email_id}
         loan_agreement_no      = {loan_agreement_no}
@@ -157,15 +158,19 @@ def load_cases(request):
 
 
 @api_view(["POST"])
-# @custom_authentication
+@custom_authentication
 def upload_bulk_cases(request):
     try:
-        login_id = 4
-        excel_file = request.FILES.get("bulk_cases_excel_sheet")
+        # login_id      = request.session.get("USER_ID")
+        # user_type     = request.session.get("USER_TYPE")
+        login_id      = request.login_id
+        user_type     = request.user_type
+        excel_file    = request.FILES.get("bulk_cases_excel_sheet")
 
         logger.info(f'''
             login_id   = {login_id}
             excel_file = {excel_file}
+            user_type  = {user_type}
         ''')
 
         if not excel_file:

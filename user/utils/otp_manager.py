@@ -36,20 +36,14 @@ class OTPManager:
             otp = OTPManager.generate_otp()
 
             # Create OTP record
-            otp_instance = Otp.objects.create(
+            Otp.objects.create(
                 OTP=otp,
-                USER_TYPE=user_type
+                USER_TYPE=user_type,
+                EMAIL_OR_MOBILE =mobile_no_email
             )
 
-            # Assign email or phone field
-            if user_type in ["admin", "arbitrator", "mediator", "bank_individual"]:
-                otp_instance.EMAIL_ID = mobile_no_email
-            else:
-                otp_instance.PHONE_NUMBER = mobile_no_email
-
-            otp_instance.save()
-
-            # 🚀 For testing: Return OTP directly instead of sending SMS or Email
+        
+            # For testing: Return OTP directly instead of sending SMS or Email
             message = f"OTP sent successfully. Your OTP is {otp}"
             logger.info(f"Generated OTP for {mobile_no_email} ({user_type}) = {otp}")
 

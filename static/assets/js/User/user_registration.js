@@ -307,17 +307,19 @@ $(document).ready(function () {
                 toastr.success(response.message);
 
                 setTimeout(function () {
-                    if (user_type === "bank_individual") {
-                        window.location.href = "/bank_user_dashboard";
-                    } else if (user_type === "admin") {
-                        window.location.href = "/admin_dashboard";
-                    } else if (user_type === "arbitrator") {
-                        window.location.href = "/arbitrator_dashboard";
-                    } else if (user_type === "mediator") {
-                        window.location.href = "/mediator_dashboard";
-                    } else {
-                        window.location.href = "/";
-                    }
+                    // if (user_type === "bank_individual") {
+                    //     window.location.href = "/bank_user_dashboard";
+                    // } else if (user_type === "admin") {
+                    //     window.location.href = "/admin_dashboard";
+                    // } else if (user_type === "arbitrator") {
+                    //     window.location.href = "/arbitrator_dashboard";
+                    // } else if (user_type === "mediator") {
+                    //     window.location.href = "/mediator_dashboard";
+                    // } else {
+                    //     window.location.href = "/";
+                    // }
+                    window.location.href = "/";
+
                 }, 1000);
             },
             error: function (xhr) {

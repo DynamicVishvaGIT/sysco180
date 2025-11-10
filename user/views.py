@@ -29,8 +29,11 @@ model_map = {
 def login(request):
     return render(request,'login.html')
 
+def dashboard(request):
+    return render(request,'dashboard.html')
+
 def registration(request):
-    return render(request,'registration.html')
+    return render(request,'signup_signin/registration.html')
 
 def arbitrator(request):
     return render(request,'arbitrator.html')
@@ -360,37 +363,38 @@ def verify_otp(request):
         if user_type not in model_map:
             return JsonResponse({"message": "Invalid user type. Contact Administrator."}, status=412)
 
-        # app_label, model_name = model_map[user_type]
-        # Model = apps.get_model(app_label, model_name)
-
-        # filter_kwargs = {}
-        # if user_type in ["admin", "arbitrator", "mediator", "bank_individual"]:
-        #     filter_kwargs["EMAIL_ID"] = mobile_no_email
-        # else:
-        #     filter_kwargs["PHONE_NUMBER"] = mobile_no_email
-
-        # user = Model.objects.filter(**filter_kwargs, IS_DELETED=False).first()
-        # if not user:
-        #     return JsonResponse({"message": "User does not exist"}, status=404)
-
         result = OTPManager.validate_otp(mobile_no_email, otp, user_type)
-        if not result["status"]:
-            return JsonResponse({"message": result["message"]}, status=400)
+       
+        user_obj = result.get("user") 
 
-        session_id = str(uuid.uuid4())
-        ip_address = get_client_ip(request)
+        ip_address = request.META.get('HTTP_X_FORWARDED_FOR')
+        if ip_address:
+            ip_address = ip_address.split(',')[0].strip()
+        else:
+            ip_address = request.META.get('REMOTE_ADDR')
+
+        if request.session.session_key is None:
+            request.session.create()
+
+        session_id = request.session.session_key
+
+        request.session['is_authenticated'] = True
+        request.session['SESSION_ID'] = session_id
+        request.session['USER_ID'] = user_obj.id if user_obj else None
+        request.session['USER_TYPE'] = user_type
 
         LoginLogs.objects.create(
             USER_TYPE=user_type,
             USER=mobile_no_email,
-            LOGIN_DATETIME  = now(),
+            LOGIN_DATETIME=now(),
             LOGIN_SESSION=session_id,
             IP_ADDRESS=ip_address,
             LOGIN_STATUS=True,
         )
 
-        return JsonResponse({"message": "OTP verified successfully!","user_type": user_type}, status=200)
+        return JsonResponse({"message": "OTP verified successfully!","user_type": user_type,"user_id": user_obj.id if user_obj else None}, status=200)
 
     except Exception as e:
         logger.exception(f"Error in verify_otp: {e}")
         return JsonResponse({"message": "Something went wrong"}, status=500)
+

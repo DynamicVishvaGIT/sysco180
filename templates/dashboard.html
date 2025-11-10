@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'head.html' %}
+</head>
+<body>
+
+    {% include 'header.html' %}
+    {% if request.session.USER_TYPE == "bank_individual" %}
+        {% include "bank_user_dashboard.html" %}
+    {% endif %}
+    {% if request.session.USER_TYPE == "arbitrator" %}
+        {% include "arbitrator_dashboard.html" %}
+    {% endif %}
+
+    {% include 'script.html' %}
+
+</body>
+</html>

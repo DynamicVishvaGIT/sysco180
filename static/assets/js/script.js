@@ -231,12 +231,10 @@ $("#backBtn").click(function () {
 $(document).ready(function() {
   // get current page filename (like sessions.php)
   var currentPage = window.location.pathname.split("/").pop();
-    console.log(currentPage);
-    
   $(".nav-link.btn-upload").each(function() {
     var linkPage = $(this).attr("href");
 
-    if (linkPage === currentPage) {
+    if (linkPage === `/${currentPage}`) {
       $(this).addClass("active");
     }
   });

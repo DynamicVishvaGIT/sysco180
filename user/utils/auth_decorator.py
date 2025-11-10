@@ -43,7 +43,7 @@ def custom_authentication(view_func):
                     request.login_id    = request.session['USER_ID']
                     request.user_type   = request.session['USER_TYPE']
                 else:
-                    return redirect("/")
+                    return redirect("/login")
             return view_func(request, *args, **kwargs)
 
         except Exception as e:
