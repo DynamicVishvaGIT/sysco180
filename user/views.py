@@ -30,7 +30,7 @@ def login(request):
     return render(request,'login.html')
 
 def registration(request):
-    return render(request,'add_user.html')
+    return render(request,'registration.html')
 
 def arbitrator(request):
     return render(request,'arbitrator.html')
