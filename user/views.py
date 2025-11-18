@@ -27,7 +27,7 @@ model_map = {
 }
 
 def login(request):
-    return render(request,'login.html')
+    return render(request,'signup_signin/login.html')
 
 def dashboard(request):
     return render(request,'dashboard.html')
