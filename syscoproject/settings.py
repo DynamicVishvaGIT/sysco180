@@ -111,6 +111,17 @@ DATABASES = {
     }
 }
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sysco180_db',
+        "USER": "SYSCO 180",
+        "PASSWORD": "Sysco@#2024",
+        "HOST": "127.0.0.1",
+        # "PORT": "4306",
+        "PORT": "3306",
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
